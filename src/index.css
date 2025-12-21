@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --container-max: 72rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* simple utilities used by components */
+.section-title {
+  @apply text-3xl font-semibold mb-4;
+}
+
+.prose p {
+  @apply text-slate-700 dark:text-slate-300;
+}
