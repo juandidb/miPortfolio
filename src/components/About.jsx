@@ -1,54 +1,76 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FiUser, FiCode, FiUsers, FiTarget, FiBarChart2, FiBookOpen } from 'react-icons/fi';
+import { useI18n } from '../i18n/index.jsx';
 
 export default function About() {
+  const { t } = useI18n();
+
+  const valuesT = t('about.values');
+  const principlesT = t('about.principles');
+
   const values = [
     {
       icon: <FiCode className="w-6 h-6" />,
-      title: "Clean Architecture",
-      description: "Applying clean architecture principles to build maintainable and well-structured applications",
+      title: valuesT?.[0]?.title ?? 'Clean Architecture',
+      description:
+        valuesT?.[0]?.description ??
+        'Applying clean architecture principles to build maintainable and well-structured applications',
       color: "from-blue-500 to-cyan-500"
     },
     {
       icon: <FiTarget className="w-6 h-6" />,
-      title: "Pragmatic Solutions",
-      description: "Focusing on real impact and practical trade-offs instead of perfect abstractions",
+      title: valuesT?.[1]?.title ?? 'Pragmatic Solutions',
+      description:
+        valuesT?.[1]?.description ??
+        'Focusing on real impact and practical trade-offs instead of perfect abstractions',
       color: "from-green-500 to-emerald-500"
     },
     {
       icon: <FiUsers className="w-6 h-6" />,
-      title: "Team Collaboration",
-      description: "Knowledge sharing, clear communication, and effective collaboration within teams",
+      title: valuesT?.[2]?.title ?? 'Team Collaboration',
+      description:
+        valuesT?.[2]?.description ??
+        'Knowledge sharing, clear communication, and effective collaboration within teams',
       color: "from-purple-500 to-pink-500"
     },
     {
       icon: <FiBarChart2 className="w-6 h-6" />,
-      title: "Observability",
-      description: "Writing debuggable code and using logging to better understand system behavior",
+      title: valuesT?.[3]?.title ?? 'Observability',
+      description:
+        valuesT?.[3]?.description ??
+        'Writing debuggable code and using logging to better understand system behavior',
       color: "from-orange-500 to-red-500"
     }
   ];
 
   const principles = [
     {
-      title: "Systems Thinking",
-      description: "Understanding how components interact and optimizing the whole system",
+      title: principlesT?.[0]?.title ?? 'Systems Thinking',
+      description:
+        principlesT?.[0]?.description ??
+        'Understanding how components interact and optimizing the whole system',
       icon: "🧠"
     },
     {
-      title: "Iterative Improvement",
-      description: "Shipping value quickly and refining based on feedback and metrics",
+      title: principlesT?.[1]?.title ?? 'Iterative Improvement',
+      description:
+        principlesT?.[1]?.description ??
+        'Shipping value quickly and refining based on feedback and metrics',
       icon: "🔄"
     },
     {
-      title: "Developer Experience",
-      description: "Prioritizing tools and workflows that empower engineering teams",
+      title: principlesT?.[2]?.title ?? 'Developer Experience',
+      description:
+        principlesT?.[2]?.description ??
+        'Prioritizing tools and workflows that empower engineering teams',
       icon: "⚡"
     },
     {
-      title: "Technical Leadership",
-      description: "Guiding technical decisions and setting quality standards",
+      title: principlesT?.[3]?.title ?? 'Technical Leadership',
+      description:
+        principlesT?.[3]?.description ??
+        'Guiding technical decisions and setting quality standards',
       icon: "🎯"
     }
   ];
@@ -89,7 +111,7 @@ export default function About() {
   };
 
   return (
-    <section id="about" className="min-h-screen py-20 md:py-28 bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-950">
+    <section id="about" className="min-h-screen py-20 md:py-28 bg-gradient-to-b from-white to-gray-50 dark:from-slate-900 dark:to-slate-900">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -102,16 +124,15 @@ export default function About() {
           <div className="inline-flex items-center gap-3 px-6 py-3 bg-gray-100 dark:bg-gray-800 rounded-full mb-6">
             <FiUser className="w-5 h-5 text-primary" />
             <span className="text-gray-700 dark:text-gray-300 font-medium">
-              Professional Profile
+              {t('about.badge')}
             </span>
           </div>
           
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-            About <span className="text-primary">Me</span>
+            {t('about.titleA')} <span className="text-primary">{t('about.titleB')}</span>
           </h2>
           <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            I'm a Systems-oriented engineer focused on building reliable, maintainable software 
-            and empowering development teams through better tools and processes.
+            {t('about.subtitle')}
           </p>
           
           <div className="mt-8 flex justify-center gap-4">
@@ -138,7 +159,7 @@ export default function About() {
                   <FiBookOpen className="w-6 h-6 text-white" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
-                  Engineering Philosophy
+                  {t('about.philosophyTitle')}
                 </h3>
               </div>
               
@@ -150,7 +171,7 @@ export default function About() {
                   transition={{ duration: 0.5, delay: 0.1 }}
                   className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed"
                 >
-                  I have a background in systems (UNLP) and software engineering, building scalable services and developer tools. I enjoy breaking down complex problems into simple, testable components and iterating quickly with clear goals. My work emphasizes maintainability, observability, and pragmatic trade-offs.
+                  {t('about.p1')}
                 </motion.p>
                 
                 <motion.p 
@@ -160,7 +181,7 @@ export default function About() {
                   transition={{ duration: 0.5, delay: 0.2 }}
                   className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed"
                 >
-                  I prioritize learning and collaboration: mentoring teammates, writing clear documentation, and improving developer experience. I'm comfortable across the stack and enjoy contributing where I have the most impact—often at the API-contract, performance bottleneck, or developer workflow level.
+                  {t('about.p2')}
                 </motion.p>
               </div>
             </div>
@@ -168,7 +189,7 @@ export default function About() {
             {/* Principles */}
             <div>
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-                Core Principles
+                {t('about.principlesTitle')}
               </h3>
               <motion.div
                 variants={containerVariants}
@@ -210,7 +231,7 @@ export default function About() {
               transition={{ duration: 0.6 }}
             >
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-                Core Values
+                {t('about.valuesTitle')}
               </h3>
               
               <motion.div
@@ -254,41 +275,41 @@ export default function About() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="bg-gradient-to-br from-gray-900 to-gray-800 dark:from-gray-800 dark:to-gray-900 rounded-2xl p-8 text-white"
             >
-              <h3 className="text-2xl font-bold mb-6">Areas of Impact</h3>
+              <h3 className="text-2xl font-bold mb-6">{t('about.impactTitle')}</h3>
               
               <div className="space-y-6">
                 <div>
-                  <h4 className="text-lg font-semibold text-primary-light mb-3">Technical Foundations</h4>
+                  <h4 className="text-lg font-semibold text-primary-light mb-3">{t('about.impactTechnicalTitle')}</h4>
                   <ul className="space-y-2">
                     <li className="flex items-center gap-3">
                       <div className="w-2 h-2 rounded-full bg-primary"></div>
-                      <span>Contributing to architecture decisions and technical discussions</span>
+                      <span>{(t('about.impactTechnicalBullets')?.[0]) ?? 'Contributing to architecture decisions and technical discussions'}</span>
                     </li>
                     <li className="flex items-center gap-3">
                       <div className="w-2 h-2 rounded-full bg-primary"></div>
-                      <span>Writing high-quality, maintainable code and participating in code reviews</span>
+                      <span>{(t('about.impactTechnicalBullets')?.[1]) ?? 'Writing high-quality, maintainable code and participating in code reviews'}</span>
                     </li>
                     <li className="flex items-center gap-3">
                       <div className="w-2 h-2 rounded-full bg-primary"></div>
-                      <span>Performance awareness and basic scalability considerations</span>
+                      <span>{(t('about.impactTechnicalBullets')?.[2]) ?? 'Performance awareness and basic scalability considerations'}</span>
                     </li>
                   </ul>
                 </div>
                 
                 <div>
-                  <h4 className="text-lg font-semibold text-primary-light mb-3">Team Collaboration</h4>
+                  <h4 className="text-lg font-semibold text-primary-light mb-3">{t('about.impactTeamTitle')}</h4>
                   <ul className="space-y-2">
                     <li className="flex items-center gap-3">
                       <div className="w-2 h-2 rounded-full bg-primary"></div>
-                      <span>Knowledge sharing and clear technical documentation</span>
+                      <span>{(t('about.impactTeamBullets')?.[0]) ?? 'Knowledge sharing and clear technical documentation'}</span>
                     </li>
                    <li className="flex items-center gap-3">
                       <div className="w-2 h-2 rounded-full bg-primary"></div>
-                      <span>Encouraging best practices and collective problem-solvings</span>
+                      <span>{(t('about.impactTeamBullets')?.[1]) ?? 'Encouraging best practices and collective problem-solving'}</span>
                     </li>
                     <li className="flex items-center gap-3">
                       <div className="w-2 h-2 rounded-full bg-primary"></div>
-                      <span>Improving developer experience and workflows</span>
+                      <span>{(t('about.impactTeamBullets')?.[2]) ?? 'Improving developer experience and workflows'}</span>
                     </li>
                   </ul>
                 </div>
@@ -310,12 +331,12 @@ export default function About() {
               <div className="inline-flex items-center gap-3 px-6 py-3 bg-gray-100 dark:bg-gray-700 rounded-full mb-6">
                 <FiTarget className="w-5 h-5 text-primary" />
                 <span className="text-gray-700 dark:text-gray-300 font-medium">
-                  My Approach to Coding
+                  {t('about.approachBadge')}
                 </span>
               </div>
               
               <blockquote className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-6 italic max-w-3xl mx-auto">
-                “Building software that is easy to understand, maintain, and work with.”
+                {t('about.quote')}
               </blockquote>
               
               <div className="flex items-center justify-center gap-4">
@@ -336,11 +357,10 @@ export default function About() {
           className="text-center mt-16 pt-10 border-t border-gray-200 dark:border-gray-800"
         >
           <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-            Interested in Working Together?
+            {t('about.ctaTitle')}
           </h3>
           <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-6">
-            If you’re looking for support in software development, IT operations, 
-            or building clean and reliable web solutions, I’m open to discussing how I can contribute.
+            {t('about.ctaText')}
           </p>
           
           <div className="flex flex-wrap justify-center gap-4">
@@ -348,13 +368,13 @@ export default function About() {
               href="#projects"
               className="inline-flex items-center gap-2 px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg font-semibold hover:bg-gray-800 dark:hover:bg-gray-100 transition-all duration-300 hover:scale-105"
             >
-              View My Work
+              {t('about.ctaWork')}
             </a>
             <a
               href="#contact"
               className="inline-flex items-center gap-2 px-6 py-3 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg font-semibold hover:bg-gray-50 dark:hover:bg-gray-800 transition-all duration-300 hover:scale-105"
             >
-              Get In Touch
+              {t('about.ctaContact')}
             </a>
           </div>
         </motion.div>

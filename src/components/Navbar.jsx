@@ -1,45 +1,51 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ThemeToggle from './ThemeToggle';
-import { FiMenu, FiX, FiHome, FiUser, FiBriefcase, FiBook, FiMail, FiCode, FiChevronDown } from 'react-icons/fi';
-
-const navLinks = [
-  { 
-    href: '#hero', 
-    label: 'Home',
-    icon: <FiHome className="w-4 h-4" />
-  },
-  { 
-    href: '#about', 
-    label: 'About',
-    icon: <FiUser className="w-4 h-4" />
-  },
-  { 
-    href: '#projects', 
-    label: 'Projects',
-    icon: <FiCode className="w-4 h-4" />
-  },
-  { 
-    href: '#work-experience', 
-    label: 'Experience',
-    icon: <FiBriefcase className="w-4 h-4" />
-  },
-  { 
-    href: '#education', 
-    label: 'Education',
-    icon: <FiBook className="w-4 h-4" />
-  },
-  { 
-    href: '#contact', 
-    label: 'Contact',
-    icon: <FiMail className="w-4 h-4" />
-  }
-];
+import { FiMenu, FiX, FiHome, FiUser, FiBriefcase, FiBook, FiMail, FiCode, FiChevronDown, FiGlobe } from 'react-icons/fi';
+import { useI18n } from '../i18n/index.jsx';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('#hero');
+
+  const { language, toggleLanguage, t } = useI18n();
+
+  const navLinks = useMemo(
+    () => [
+      {
+        href: '#hero',
+        label: t('nav.home'),
+        icon: <FiHome className="w-4 h-4" />
+      },
+      {
+        href: '#about',
+        label: t('nav.about'),
+        icon: <FiUser className="w-4 h-4" />
+      },
+      {
+        href: '#projects',
+        label: t('nav.projects'),
+        icon: <FiCode className="w-4 h-4" />
+      },
+      {
+        href: '#work-experience',
+        label: t('nav.experience'),
+        icon: <FiBriefcase className="w-4 h-4" />
+      },
+      {
+        href: '#education',
+        label: t('nav.education'),
+        icon: <FiBook className="w-4 h-4" />
+      },
+      {
+        href: '#contact',
+        label: t('nav.contact'),
+        icon: <FiMail className="w-4 h-4" />
+      }
+    ],
+    [t]
+  );
 
   useEffect(() => {
     function onScroll() {
@@ -135,8 +141,8 @@ export default function Navbar() {
       variants={navbarVariants}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled 
-          ? 'bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl shadow-xl' 
-          : 'bg-white/90 dark:bg-gray-900/90 backdrop-blur-lg'
+          ? 'bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl shadow-xl' 
+          : 'bg-white/90 dark:bg-slate-900/90 backdrop-blur-lg'
       }`}
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -231,6 +237,21 @@ export default function Navbar() {
               <ThemeToggle />
             </motion.div>
 
+            {/* Language Toggle */}
+            <motion.button
+              type="button"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={toggleLanguage}
+              aria-label={t('langSwitchAria')}
+              className="p-2 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors flex items-center gap-2"
+            >
+              <FiGlobe className="w-4 h-4" />
+              <span className="text-xs font-semibold">
+                {language === 'en' ? 'ES' : 'EN'}
+              </span>
+            </motion.button>
+
             {/* CTA Button */}
             <motion.a
               href="#contact"
@@ -242,7 +263,7 @@ export default function Navbar() {
               whileTap={{ scale: 0.95 }}
               className="ml-2 px-5 py-2.5 bg-gradient-to-r from-primary to-purple-600 text-white rounded-full font-semibold text-sm hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 flex items-center gap-2"
             >
-              Hire Me
+              {t('navbar.hireMe')}
               <FiChevronDown className="w-4 h-4 rotate-270" />
             </motion.a>
           </div>
@@ -250,6 +271,19 @@ export default function Navbar() {
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center gap-4">
             <ThemeToggle />
+
+            <motion.button
+              type="button"
+              whileTap={{ scale: 0.9 }}
+              onClick={toggleLanguage}
+              aria-label={t('langSwitchAria')}
+              className="p-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors flex items-center gap-2"
+            >
+              <FiGlobe className="w-5 h-5" />
+              <span className="text-xs font-semibold">
+                {language === 'en' ? 'ES' : 'EN'}
+              </span>
+            </motion.button>
             
             <motion.button
               whileTap={{ scale: 0.9 }}
@@ -319,7 +353,7 @@ export default function Navbar() {
                     whileTap={{ scale: 0.98 }}
                     className="block w-full px-4 py-3 text-center bg-gradient-to-r from-primary to-purple-600 text-white rounded-lg font-semibold shadow-lg"
                   >
-                    Contact Me
+                    {t('nav.contact')}
                   </motion.a>
                 </div>
               </div>

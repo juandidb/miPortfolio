@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiMail, FiSend, FiMapPin, FiPhone, FiCheckCircle, FiAlertCircle, FiGithub, FiLinkedin, FiUser, FiMessageSquare } from 'react-icons/fi';
+import { useI18n } from '../i18n';
 
 export default function Contact() {
+  const { t } = useI18n();
   const [form, setForm] = useState({ 
     name: '', 
     email: '', 
@@ -19,9 +21,9 @@ export default function Contact() {
   };
 
   const validate = () => {
-    if (!form.name.trim()) return 'Please enter your name.';
-    if (!form.email.match(/^[^@\s]+@[^@\s]+\.[^@\s]+$/)) return 'Please enter a valid email address.';
-    if (form.message.trim().length < 10) return 'Message must be at least 10 characters.';
+    if (!form.name.trim()) return t('contact.validation.nameRequired');
+    if (!form.email.match(/^[^@\s]+@[^@\s]+\.[^@\s]+$/)) return t('contact.validation.emailInvalid');
+    if (form.message.trim().length < 10) return t('contact.validation.messageTooShort');
     return null;
   };
 
@@ -41,7 +43,7 @@ export default function Contact() {
     
     setStatus({ 
       type: 'success', 
-      message: 'Message sent successfully! I\'ll get back to you within 24 hours.' 
+      message: t('contact.success')
     });
     
     setForm({ name: '', email: '', subject: '', message: '' });
@@ -51,22 +53,22 @@ export default function Contact() {
   const contactInfo = [
     {
       icon: <FiMail className="w-5 h-5" />,
-      title: 'Email',
-      value: 'juan@example.com',
-      link: 'mailto:juan@example.com',
+      title: t('contact.info.email'),
+      value: 'juandidb@gmail.com',
+      link: 'mailto:juandibenedetto99@gmail.com',
       color: 'from-blue-500 to-cyan-500'
     },
     {
       icon: <FiPhone className="w-5 h-5" />,
-      title: 'Phone',
+      title: t('contact.info.phone'),
       value: '+54 9 2317 1471695',
       link: 'tel:+54923171471695',
       color: 'from-green-500 to-emerald-500'
     },
     {
       icon: <FiMapPin className="w-5 h-5" />,
-      title: 'Location',
-      value: 'Argentina',
+      title: t('contact.info.location'),
+      value: t('contact.info.locationValue'),
       link: 'https://maps.google.com/?q=Buenos+Aires',
       color: 'from-red-500 to-orange-500'
     }
@@ -135,7 +137,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="min-h-screen py-20 md:py-28 bg-gradient-to-b from-gray-50 to-white dark:from-gray-950 dark:to-gray-900">
+    <section id="contact" className="min-h-screen py-20 md:py-28 bg-gradient-to-b from-gray-50 to-white dark:from-slate-900 dark:to-slate-900">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -146,11 +148,10 @@ export default function Contact() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-            Get In <span className="text-primary">Touch</span>
+            {t('contact.titleA')} <span className="text-primary">{t('contact.titleB')}</span>
           </h2>
           <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Have a project in mind or want to discuss opportunities? 
-            I'm always open to talking about technology, design, and new challenges.
+            {t('contact.subtitle')}
           </p>
           
           <div className="mt-8 flex justify-center gap-4">
@@ -174,7 +175,7 @@ export default function Contact() {
                 <FiMessageSquare className="w-6 h-6 text-white" />
               </div>
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
-                Send me a message
+                {t('contact.formTitle')}
               </h3>
             </div>
 
@@ -182,7 +183,7 @@ export default function Contact() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Name *
+                    {t('contact.name')}
                   </label>
                   <div className="relative">
                     <FiUser className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
@@ -191,7 +192,7 @@ export default function Contact() {
                       name="name"
                       value={form.name}
                       onChange={handleChange}
-                      placeholder="Your name"
+                      placeholder={t('contact.placeholderName')}
                       className="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 
                         bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white 
                         focus:ring-2 focus:ring-primary focus:border-transparent 
@@ -202,7 +203,7 @@ export default function Contact() {
                 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Email *
+                    {t('contact.email')}
                   </label>
                   <div className="relative">
                     <FiMail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
@@ -211,7 +212,7 @@ export default function Contact() {
                       name="email"
                       value={form.email}
                       onChange={handleChange}
-                      placeholder="you@example.com"
+                      placeholder={t('contact.placeholderEmail')}
                       className="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 
                         bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white 
                         focus:ring-2 focus:ring-primary focus:border-transparent 
@@ -223,14 +224,14 @@ export default function Contact() {
               
               <div>
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  Subject
+                  {t('contact.subject')}
                 </label>
                 <input
                   type="text"
                   name="subject"
                   value={form.subject}
                   onChange={handleChange}
-                  placeholder="How can I help you?"
+                  placeholder={t('contact.placeholderSubject')}
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 
                     bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white 
                     focus:ring-2 focus:ring-primary focus:border-transparent 
@@ -240,14 +241,14 @@ export default function Contact() {
               
               <div>
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  Message *
+                  {t('contact.message')}
                 </label>
                 <textarea
                   name="message"
                   value={form.message}
                   onChange={handleChange}
                   rows="6"
-                  placeholder="Tell me about your project or inquiry..."
+                  placeholder={t('contact.placeholderMessage')}
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 
                     bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white 
                     focus:ring-2 focus:ring-primary focus:border-transparent 
@@ -298,12 +299,12 @@ export default function Contact() {
                 {isSubmitting ? (
                   <>
                     <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                    Sending...
+                    {t('contact.sending')}
                   </>
                 ) : (
                   <>
                     <FiSend className="w-5 h-5" />
-                    Send Message
+                    {t('contact.send')}
                   </>
                 )}
               </motion.button>
@@ -321,7 +322,7 @@ export default function Contact() {
             {/* Contact Info Cards */}
             <div>
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-                Contact Information
+                {t('contact.infoTitle')}
               </h3>
               
               <motion.div
@@ -365,7 +366,7 @@ export default function Contact() {
             {/* Social Links */}
             <div>
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-                Connect With Me
+                {t('contact.connectTitle')}
               </h3>
               
               <div className="flex flex-wrap gap-3">
@@ -398,27 +399,26 @@ export default function Contact() {
                   <div className="w-3 h-3 bg-green-400 rounded-full animate-ping absolute"></div>
                   <div className="w-3 h-3 bg-green-500 rounded-full relative"></div>
                 </div>
-                <span className="font-semibold">Currently Available</span>
+                <span className="font-semibold">{t('contact.availabilityBadge')}</span>
               </div>
               
-              <h4 className="text-xl font-bold mb-3">Let's work together</h4>
+              <h4 className="text-xl font-bold mb-3">{t('contact.availabilityTitle')}</h4>
               <p className="text-gray-300 mb-6">
-                I'm currently open to new opportunities, collaborations, and interesting projects. 
-                Whether it's a full-time role or a freelance project, let's discuss how we can create something amazing.
+                {t('contact.availabilityText')}
               </p>
               
               <div className="space-y-3">
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-primary rounded-full"></div>
-                  <span className="text-sm">Response time: Within 24 hours</span>
+                  <span className="text-sm">{t('contact.availabilityBullets.responseTime')}</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
-                  <span className="text-sm">Available for: Full-time & Contract roles</span>
+                  <span className="text-sm">{t('contact.availabilityBullets.availability')}</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                  <span className="text-sm">Timezone: ART (UTC-3)</span>
+                  <span className="text-sm">{t('contact.availabilityBullets.timezone')}</span>
                 </div>
               </div>
             </div>
@@ -434,13 +434,13 @@ export default function Contact() {
           className="text-center mt-16 pt-10 border-t border-gray-200 dark:border-gray-800"
         >
           <p className="text-gray-600 dark:text-gray-400">
-            Prefer a more direct approach? Feel free to email me directly at{' '}
+            {t('contact.footerNote')}{' '}
             <a href="mailto:juandibenedetto@gmail.com" className="text-primary hover:underline font-medium">
               juandibenedetto99@gmail.com
             </a>
           </p>
           <p className="text-sm text-gray-500 dark:text-gray-500 mt-2">
-            I typically respond within a few hours during business days.
+            {t('contact.footerSubNote')}
           </p>
         </motion.div>
       </div>

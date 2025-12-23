@@ -1,7 +1,15 @@
 import { motion } from 'framer-motion'
 import { TypeAnimation } from 'react-type-animation'
+import { useI18n } from '../i18n/index.jsx'
 
 export default function Hero() {
+  const { t } = useI18n();
+
+  const roles = t('hero.roles');
+  const roleSequence = Array.isArray(roles)
+    ? roles.flatMap((role) => [role, 1500, { delete: String(role).length }])
+    : [];
+
   return (
     <section id="hero" className="min-h-screen flex items-center justify-center relative">
       {/* Fondo opcional si quieres agregar un efecto */}
@@ -27,28 +35,7 @@ export default function Hero() {
           {/* Texto animado de profesiones */}
           <div className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-700 dark:text-gray-300 min-h-[80px] md:min-h-[90px] mb-8">
             <TypeAnimation
-              sequence={[
-                'Software Developer',
-                2000,
-                { delete: 19 },
-                'IT Support',
-                1500,
-                { delete: 10 },
-                'Web Development',
-                1500,
-                { delete: 15 },
-                'UX/UI Design',
-                1500,
-                { delete: 12 },
-                'QA Testing',
-                1500,
-                { delete: 10 },
-                'Data Analysis',
-                1500,
-                { delete: 13 },
-                '',
-                1500,
-              ]}
+              sequence={[...roleSequence, '', 1000]}
               wrapper="span"
               speed={50}
               cursor={true}
@@ -62,7 +49,7 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="max-w-2xl mx-auto text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-10"
           >
-           IT Support professional, web developer and System student. I build clean, functional web experiences and provide reliable technical support, always focused on clarity, performance, and real-world solutions.
+            {t('hero.intro')}
           </motion.p>
           
           <motion.div 
@@ -75,13 +62,13 @@ export default function Hero() {
               href="#projects" 
               className="inline-flex items-center justify-center px-6 py-3 rounded-md bg-primary text-white hover:opacity-95 text-lg font-medium transition-all duration-300 hover:scale-105"
             >
-              View Projects
+              {t('hero.ctaProjects')}
             </a>
             <a 
               href="#contact" 
               className="inline-flex items-center justify-center px-6 py-3 rounded-md border-2 border-slate-300 dark:border-slate-600 text-lg font-medium transition-all duration-300 hover:scale-105 hover:bg-gray-100 dark:hover:bg-gray-800"
             >
-              Contact Me
+              {t('hero.ctaContact')}
             </a>
           </motion.div>
           

@@ -1,40 +1,93 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FiBriefcase, FiCalendar, FiMapPin, FiCode, FiTool, FiCpu } from 'react-icons/fi';
+import { useI18n } from '../i18n/index.jsx';
 
 export default function WorkExperience() {
+  const { language, t } = useI18n();
+
   const items = [
     { 
-      title: 'IT Support Specialist',
+      title: {
+        en: 'IT Support Specialist',
+        es: 'Especialista en Soporte IT'
+      },
       company: 'OktaTech',
       period: '2022 — 2024', 
       location: 'La Plata, Buenos Aires',
-      type: 'Full-time',
-      desc: 'Responsible for diagnosing and resolving issues related to billing systems, management software, and hardware. I analyzed technical incidents, identified root causes, and provided effective solutions to ensure the smooth and reliable operation of critical systems.',
-      achievements: [
-        'Reduced system downtime by 40% through proactive monitoring and rapid incident response',
-        'Implemented automated troubleshooting scripts that decreased resolution time by 35%',
-        'Improved customer satisfaction scores from 85% to 96% through enhanced support protocols'
-      ],
+      type: {
+        en: 'Full-time',
+        es: 'Tiempo completo'
+      },
+      desc: {
+        en: 'Responsible for diagnosing and resolving issues related to billing systems, management software, and hardware. I analyzed technical incidents, identified root causes, and provided effective solutions to ensure the smooth and reliable operation of critical systems.',
+        es: 'Responsable de diagnosticar y resolver incidentes vinculados a sistemas de facturación, software de gestión y hardware. Analicé incidentes técnicos, identifiqué causas raíz y propuse soluciones efectivas para asegurar la operación estable y confiable de sistemas críticos.'
+      },
+      achievements: {
+        en: [
+          'Reduced system downtime by 40% through proactive monitoring and rapid incident response',
+          'Implemented automated troubleshooting scripts that decreased resolution time by 35%',
+          'Improved customer satisfaction scores from 85% to 96% through enhanced support protocols'
+        ],
+        es: [
+          'Reduje el tiempo de inactividad del sistema en un 40% mediante monitoreo proactivo y respuesta rápida',
+          'Implementé scripts de troubleshooting automatizado, reduciendo tiempos de resolución en un 35%',
+          'Mejoré la satisfacción del cliente del 85% al 96% optimizando protocolos de soporte'
+        ]
+      },
       technologies: ['Software Development', 'System Administration', 'Troubleshooting', 'Hardware Support', 'Database Management', 'Networking'],
-      industry: 'IT Services & Consulting'
+      industry: {
+        en: 'IT Services & Consulting',
+        es: 'Servicios IT y Consultoría'
+      }
     },
     { 
-      title: 'FrontEnd Developer Freelance',
+      title: {
+        en: 'FrontEnd Developer Freelance',
+        es: 'Desarrollador Frontend Freelance'
+      },
       company: 'Self-Employed',
       period: '2021 — 2023',
       location: 'Remote',
-      type: 'Freelance',
-      desc: 'Developed and maintained responsive websites and web applications for various clients, ensuring optimal performance and user experience across devices. Collaborated closely with clients to understand their requirements and deliver tailored solutions that met their business goals.',
-      achievements: [
-        'Successfully delivered over 6 projects with a 100% client satisfaction rate',
-        'Optimized website load times by an average of 30% through efficient coding practices and asset management',
-        'Implemented responsive design patterns that improved mobile user engagement.'
-      ],
+      type: {
+        en: 'Freelance',
+        es: 'Freelance'
+      },
+      desc: {
+        en: 'Developed and maintained responsive websites and web applications for various clients, ensuring optimal performance and user experience across devices. Collaborated closely with clients to understand their requirements and deliver tailored solutions that met their business goals.',
+        es: 'Desarrollé y mantuve sitios web y aplicaciones responsivas para distintos clientes, asegurando performance y buena experiencia de usuario en múltiples dispositivos. Colaboré con clientes para entender necesidades y entregar soluciones a medida alineadas a sus objetivos.'
+      },
+      achievements: {
+        en: [
+          'Successfully delivered over 6 projects with a 100% client satisfaction rate',
+          'Optimized website load times by an average of 30% through efficient coding practices and asset management',
+          'Implemented responsive design patterns that improved mobile user engagement.'
+        ],
+        es: [
+          'Entregué más de 6 proyectos con 100% de satisfacción de clientes',
+          'Optimicé tiempos de carga en un promedio del 30% con buenas prácticas y gestión de assets',
+          'Implementé patrones de diseño responsivo que mejoraron el engagement en mobile'
+        ]
+      },
       technologies: ['JavaScript', 'React', 'HTML/CSS', 'UI/UX Design', 'Web Development', 'Int', 'PostgreSQL'],
-      industry: 'Web Development'
+      industry: {
+        en: 'Web Development',
+        es: 'Desarrollo Web'
+      }
     }
   ];
+
+  const localizedItems = items.map((item) => ({
+    ...item,
+    title: typeof item.title === 'object' ? (item.title?.[language] ?? item.title?.en ?? '') : item.title,
+    type: typeof item.type === 'object' ? (item.type?.[language] ?? item.type?.en ?? '') : item.type,
+    desc: typeof item.desc === 'object' ? (item.desc?.[language] ?? item.desc?.en ?? '') : item.desc,
+    achievements:
+      typeof item.achievements === 'object'
+        ? (item.achievements?.[language] ?? item.achievements?.en ?? [])
+        : item.achievements,
+    industry: typeof item.industry === 'object' ? (item.industry?.[language] ?? item.industry?.en ?? '') : item.industry
+  }));
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -70,7 +123,7 @@ export default function WorkExperience() {
   };
 
   return (
-    <section id="work-experience" className="min-h-screen py-20 md:py-28 bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-950">
+    <section id="work-experience" className="min-h-screen py-20 md:py-28 bg-gradient-to-b from-white to-gray-50 dark:from-slate-900 dark:to-slate-900">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -81,11 +134,10 @@ export default function WorkExperience() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-            Work <span className="text-primary">Experience</span>
+            {t('experience.titleA')} <span className="text-primary">{t('experience.titleB')}</span>
           </h2>
           <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Professional journey through roles that have shaped my technical expertise and 
-            problem-solving approach in real-world environments.
+            {t('experience.subtitle')}
           </p>
           
           <div className="mt-8 flex justify-center gap-4">
@@ -107,7 +159,7 @@ export default function WorkExperience() {
             viewport={{ once: true, amount: 0.1 }}
             className="space-y-12"
           >
-            {items.map((item, index) => (
+            {localizedItems.map((item, index) => (
               <motion.div
                 key={index}
                 variants={itemVariants}
@@ -181,7 +233,7 @@ export default function WorkExperience() {
                   <div className="mb-6">
                     <h4 className="font-semibold text-gray-700 dark:text-gray-300 mb-3 flex items-center gap-2">
                       <div className="w-2 h-2 bg-primary rounded-full"></div>
-                      Key Achievements
+                      {t('experience.keyAchievements')}
                     </h4>
                     <ul className="space-y-2">
                       {item.achievements.map((achievement, aIndex) => (
@@ -195,7 +247,7 @@ export default function WorkExperience() {
 
                   {/* Technologies */}
                   <div>
-                    <h4 className="font-semibold text-gray-700 dark:text-gray-300 mb-3">Technologies & Skills</h4>
+                    <h4 className="font-semibold text-gray-700 dark:text-gray-300 mb-3">{t('experience.technologies')}</h4>
                     <div className="flex flex-wrap gap-2">
                       {item.technologies.map((tech, tIndex) => (
                         <span 
@@ -232,31 +284,30 @@ export default function WorkExperience() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
             <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm">
               <div className="text-3xl font-bold text-primary mb-2">3+</div>
-              <div className="text-gray-700 dark:text-gray-300 font-medium">Years Experience</div>
-              <div className="text-sm text-gray-500 dark:text-gray-500">Combined professional experience</div>
+              <div className="text-gray-700 dark:text-gray-300 font-medium">{t('experience.stats.years')}</div>
+              <div className="text-sm text-gray-500 dark:text-gray-500">{t('experience.stats.yearsSub')}</div>
             </div>
             
             <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm">
               <div className="text-3xl font-bold text-primary mb-2">8+</div>
-              <div className="text-gray-700 dark:text-gray-300 font-medium">Technologies Mastered</div>
-              <div className="text-sm text-gray-500 dark:text-gray-500">Across different roles and projects</div>
+              <div className="text-gray-700 dark:text-gray-300 font-medium">{t('experience.stats.tech')}</div>
+              <div className="text-sm text-gray-500 dark:text-gray-500">{t('experience.stats.techSub')}</div>
             </div>
             
             <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm">
               <div className="text-3xl font-bold text-primary mb-2">100%</div>
-              <div className="text-gray-700 dark:text-gray-300 font-medium">Problem Solving</div>
-              <div className="text-sm text-gray-500 dark:text-gray-500">Track record of delivering solutions</div>
+              <div className="text-gray-700 dark:text-gray-300 font-medium">{t('experience.stats.solving')}</div>
+              <div className="text-sm text-gray-500 dark:text-gray-500">{t('experience.stats.solvingSub')}</div>
             </div>
           </div>
 
           {/* CTA */}
           <div className="text-center pt-10 border-t border-gray-200 dark:border-gray-800">
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-              Ready to Bring My Experience to Your Team
+              {t('experience.ctaTitle')}
             </h3>
             <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-6">
-              With hands-on experience in both IT support and backend engineering, 
-              I bring a unique perspective to solving complex technical challenges.
+              {t('experience.ctaText')}
             </p>
             
             <div className="flex flex-wrap justify-center gap-4">
@@ -264,13 +315,13 @@ export default function WorkExperience() {
                 href="#projects"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg font-semibold hover:bg-gray-800 dark:hover:bg-gray-100 transition-all duration-300 hover:scale-105"
               >
-                See My Projects
+                {t('experience.ctaProjects')}
               </a>
               <a
                 href="#contact"
                 className="inline-flex items-center gap-2 px-6 py-3 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg font-semibold hover:bg-gray-50 dark:hover:bg-gray-800 transition-all duration-300 hover:scale-105"
               >
-                Contact Me
+                {t('experience.ctaContact')}
               </a>
             </div>
           </div>

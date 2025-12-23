@@ -1,8 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FiCode, FiServer, FiTool, FiStar, FiTrendingUp, FiTarget } from 'react-icons/fi';
+import { useI18n } from '../i18n/index.jsx';
 
 export default function Skills() {
+  const { t } = useI18n();
+
   const skills = {
     Frontend: [
       { name: 'React', level: 95, icon: '⚛️', years: '4 years' },
@@ -101,15 +104,22 @@ export default function Skills() {
     return 'bg-orange-500';
   };
 
+  const getLevelBadgeClasses = (level) => {
+    if (level >= 90) return 'bg-green-500/10 text-green-700 dark:text-green-300';
+    if (level >= 80) return 'bg-blue-500/10 text-blue-700 dark:text-blue-300';
+    if (level >= 70) return 'bg-yellow-500/10 text-yellow-800 dark:text-yellow-300';
+    return 'bg-orange-500/10 text-orange-700 dark:text-orange-300';
+  };
+
   const getLevelText = (level) => {
-    if (level >= 90) return 'Expert';
-    if (level >= 80) return 'Advanced';
-    if (level >= 70) return 'Intermediate';
-    return 'Learning';
+    if (level >= 90) return t('skills.levels.expert');
+    if (level >= 80) return t('skills.levels.advanced');
+    if (level >= 70) return t('skills.levels.intermediate');
+    return t('skills.levels.learning');
   };
 
   return (
-    <section id="skills" className="min-h-screen py-20 md:py-28 bg-gradient-to-b from-gray-50 to-white dark:from-gray-950 dark:to-gray-900">
+    <section id="skills" className="min-h-screen py-20 md:py-28 bg-gradient-to-b from-gray-50 to-white dark:from-slate-900 dark:to-slate-900">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -120,11 +130,10 @@ export default function Skills() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-            Technical <span className="text-primary">Skills</span>
+            {t('skills.titleA')} <span className="text-primary">{t('skills.titleB')}</span>
           </h2>
           <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            A comprehensive overview of my technical expertise, developed through years of 
-            hands-on experience and continuous learning.
+            {t('skills.subtitle')}
           </p>
           
           <div className="mt-8 flex justify-center gap-4">
@@ -160,7 +169,7 @@ export default function Skills() {
                       {category}
                     </h3>
                     <p className="text-sm text-gray-500 dark:text-gray-400">
-                      {skillList.length} core skills
+                      {t('skills.coreSkillsCount', skillList.length)}
                     </p>
                   </div>
                 </div>
@@ -175,18 +184,21 @@ export default function Skills() {
                       className="space-y-2"
                     >
                       {/* Skill Header */}
-                      <div className="flex justify-between items-center">
-                        <div className="flex items-center gap-2">
+                      <div className="flex justify-between items-start gap-3">
+                        <div className="flex items-center gap-2 min-w-0">
                           <span className="text-lg">{skill.icon}</span>
                           <span className="font-medium text-gray-800 dark:text-gray-200">
                             {skill.name}
                           </span>
                         </div>
-                        <div className="flex items-center gap-2">
-                          <span className="text-xs font-medium px-2 py-1 rounded-full bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300">
-                            {skill.years}
+                        <div className="flex flex-wrap items-center justify-end gap-2">
+                          <span className="text-xs font-medium px-2 py-1 rounded-full bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 whitespace-nowrap">
+                            {(() => {
+                              const n = parseInt(String(skill.years), 10);
+                              return Number.isFinite(n) ? t('skills.years', n) : skill.years;
+                            })()}
                           </span>
-                          <span className={`text-xs font-semibold px-2 py-1 rounded-full ${getLevelColor(skill.level)}/10 text-${getLevelColor(skill.level).split('-')[1]}-600 dark:text-${getLevelColor(skill.level).split('-')[1]}-400`}>
+                          <span className={`text-xs font-semibold px-2 py-1 rounded-full whitespace-nowrap ${getLevelBadgeClasses(skill.level)}`}>
                             {getLevelText(skill.level)}
                           </span>
                         </div>
@@ -195,7 +207,7 @@ export default function Skills() {
                       {/* Progress Bar */}
                       <div className="space-y-1">
                         <div className="flex justify-between text-xs text-gray-500 dark:text-gray-400">
-                          <span>Proficiency</span>
+                          <span>{t('skills.proficiency')}</span>
                           <span className="font-semibold">{skill.level}%</span>
                         </div>
                         <div className="h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
@@ -217,7 +229,10 @@ export default function Skills() {
                 <div className="mt-6 pt-4 border-t border-gray-100 dark:border-gray-700">
                   <div className="flex items-center justify-between">
                     <div className="text-sm text-gray-500 dark:text-gray-400">
-                      Average level: {Math.round(skillList.reduce((acc, s) => acc + s.level, 0) / skillList.length)}%
+                      {t(
+                        'skills.averageLevel',
+                        Math.round(skillList.reduce((acc, s) => acc + s.level, 0) / skillList.length)
+                      )}
                     </div>
                     <div className="w-8 h-1 bg-gradient-to-r from-primary to-purple-600 rounded-full"></div>
                   </div>
@@ -240,42 +255,42 @@ export default function Skills() {
             <div className="bg-gradient-to-br from-gray-900 to-gray-800 dark:from-gray-800 dark:to-gray-900 rounded-2xl p-8 text-white">
               <div className="flex items-center gap-3 mb-6">
                 <FiTarget className="w-8 h-8 text-primary" />
-                <h3 className="text-2xl font-bold">Complementary Skills</h3>
+                <h3 className="text-2xl font-bold">{t('skills.complementaryTitle')}</h3>
               </div>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <h4 className="text-lg font-semibold mb-3 text-primary-light">Problem Solving</h4>
+                  <h4 className="text-lg font-semibold mb-3 text-primary-light">{t('skills.complementaryProblemSolving')}</h4>
                   <ul className="space-y-2">
                     <li className="flex items-center gap-2">
                       <div className="w-1.5 h-1.5 rounded-full bg-primary"></div>
-                      <span>Analytical Thinking & Debugging</span>
+                      <span>{(t('skills.complementaryProblemBullets')?.[0]) ?? 'Analytical Thinking & Debugging'}</span>
                     </li>
                     <li className="flex items-center gap-2">
                       <div className="w-1.5 h-1.5 rounded-full bg-primary"></div>
-                      <span>System Architecture Design</span>
+                      <span>{(t('skills.complementaryProblemBullets')?.[1]) ?? 'System Architecture Design'}</span>
                     </li>
                     <li className="flex items-center gap-2">
                       <div className="w-1.5 h-1.5 rounded-full bg-primary"></div>
-                      <span>Performance Optimization</span>
+                      <span>{(t('skills.complementaryProblemBullets')?.[2]) ?? 'Performance Optimization'}</span>
                     </li>
                   </ul>
                 </div>
                 
                 <div>
-                  <h4 className="text-lg font-semibold mb-3 text-primary-light">Team Collaboration</h4>
+                  <h4 className="text-lg font-semibold mb-3 text-primary-light">{t('skills.complementaryTeam')}</h4>
                   <ul className="space-y-2">
                     <li className="flex items-center gap-2">
                       <div className="w-1.5 h-1.5 rounded-full bg-primary"></div>
-                      <span>Agile/Scrum Methodologies</span>
+                      <span>{(t('skills.complementaryTeamBullets')?.[0]) ?? 'Agile/Scrum Methodologies'}</span>
                     </li>
                     <li className="flex items-center gap-2">
                       <div className="w-1.5 h-1.5 rounded-full bg-primary"></div>
-                      <span>Code Review & Mentoring</span>
+                      <span>{(t('skills.complementaryTeamBullets')?.[1]) ?? 'Code Review & Mentoring'}</span>
                     </li>
                     <li className="flex items-center gap-2">
                       <div className="w-1.5 h-1.5 rounded-full bg-primary"></div>
-                      <span>Technical Documentation</span>
+                      <span>{(t('skills.complementaryTeamBullets')?.[2]) ?? 'Technical Documentation'}</span>
                     </li>
                   </ul>
                 </div>
@@ -287,19 +302,19 @@ export default function Skills() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 max-w-4xl mx-auto">
             <div className="bg-white dark:bg-gray-800 rounded-xl p-4 text-center border border-gray-200 dark:border-gray-700">
               <div className="text-2xl font-bold text-primary mb-1">15+</div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">Technologies</div>
+              <div className="text-sm text-gray-600 dark:text-gray-400">{t('skills.stats.technologies')}</div>
             </div>
             <div className="bg-white dark:bg-gray-800 rounded-xl p-4 text-center border border-gray-200 dark:border-gray-700">
               <div className="text-2xl font-bold text-primary mb-1">85%</div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">Average Proficiency</div>
+              <div className="text-sm text-gray-600 dark:text-gray-400">{t('skills.stats.avgProficiency')}</div>
             </div>
             <div className="bg-white dark:bg-gray-800 rounded-xl p-4 text-center border border-gray-200 dark:border-gray-700">
               <div className="text-2xl font-bold text-primary mb-1">5+</div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">Years Experience</div>
+              <div className="text-sm text-gray-600 dark:text-gray-400">{t('skills.stats.yearsExperience')}</div>
             </div>
             <div className="bg-white dark:bg-gray-800 rounded-xl p-4 text-center border border-gray-200 dark:border-gray-700">
               <div className="text-2xl font-bold text-primary mb-1">3</div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">Skill Categories</div>
+              <div className="text-sm text-gray-600 dark:text-gray-400">{t('skills.stats.categories')}</div>
             </div>
           </div>
 
@@ -308,16 +323,15 @@ export default function Skills() {
             <div className="inline-flex items-center gap-3 px-6 py-3 bg-gray-100 dark:bg-gray-800 rounded-full mb-6">
               <FiTrendingUp className="w-5 h-5 text-primary" />
               <span className="text-gray-700 dark:text-gray-300 font-medium">
-                Continuously expanding skill set
+                {t('skills.ctaBadge')}
               </span>
             </div>
             
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-              Ready to Apply My Skills to Your Projects
+              {t('skills.ctaTitle')}
             </h3>
             <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-6">
-             I can support different stages of a project, contributing with development,
-              troubleshooting, and well-structured solutions.
+              {t('skills.ctaText')}
             </p>
             
             <div className="flex flex-wrap justify-center gap-4">
@@ -325,13 +339,13 @@ export default function Skills() {
                 href="#projects"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg font-semibold hover:bg-gray-800 dark:hover:bg-gray-100 transition-all duration-300 hover:scale-105"
               >
-                See Projects
+                {t('skills.ctaProjects')}
               </a>
               <a
                 href="#contact"
                 className="inline-flex items-center gap-2 px-6 py-3 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg font-semibold hover:bg-gray-50 dark:hover:bg-gray-800 transition-all duration-300 hover:scale-105"
               >
-                Discuss Skills
+                {t('skills.ctaContact')}
               </a>
             </div>
           </div>
