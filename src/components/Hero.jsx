@@ -3,7 +3,7 @@ import { TypeAnimation } from 'react-type-animation'
 import { useI18n } from '../i18n/index.jsx'
 
 export default function Hero() {
-  const { t } = useI18n();
+  const { t, language } = useI18n();
 
   const roles = t('hero.roles');
   const roleSequence = Array.isArray(roles)
@@ -35,6 +35,7 @@ export default function Hero() {
           {/* Texto animado de profesiones */}
           <div className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-700 dark:text-gray-300 min-h-[80px] md:min-h-[90px] mb-8">
             <TypeAnimation
+              key={language}
               sequence={[...roleSequence, '', 1000]}
               wrapper="span"
               speed={50}
