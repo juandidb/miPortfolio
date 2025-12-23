@@ -7,6 +7,8 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
   const { t } = useI18n();
 
+  const logoUrl = `${import.meta.env.BASE_URL}logoJuan.png`;
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -106,7 +108,7 @@ export default function Footer() {
                   <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-gray-100 to-gray-50 dark:from-gray-800 dark:to-gray-900 flex items-center justify-center shadow-lg border border-gray-200 dark:border-gray-700">
                     {/* TU LOGO */}
                     <img 
-                      src="/miPortfolio/logoJuan.png" 
+                      src={logoUrl}
                       alt="Juan Di Benedetto Logo"
                       className="w-10 h-10 object-contain filter dark:invert dark:brightness-200"
                     />

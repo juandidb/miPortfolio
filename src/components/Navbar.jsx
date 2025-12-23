@@ -9,6 +9,8 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('#hero');
 
+  const logoUrl = `${import.meta.env.BASE_URL}logoJuan.png`;
+
   const { language, toggleLanguage, t } = useI18n();
 
   const navLinks = useMemo(
@@ -166,7 +168,7 @@ export default function Navbar() {
                 {/* Logo with subtle background for contrast */}
                 <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-gray-100 to-gray-50 dark:from-gray-800 dark:to-gray-900 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-sm border border-gray-200 dark:border-gray-700">
                   <img 
-                    src=" /miPortfolio/logoJuan.png"
+                    src={logoUrl}
                     alt="Juan Di Benedetto Logo"
                     className="w-8 h-8 object-contain filter dark:invert dark:brightness-200"
                   />
