@@ -27,7 +27,7 @@ const translations = {
         'Data Analysis'
       ],
       intro:
-        'IT Support professional, web developer and Systems student. I build clean, functional web experiences and provide reliable technical support, always focused on clarity, performance, and real-world solutions.',
+        'IT support analyst and web developer. I build clean, functional web experiences, and deliver solid IT systems solutions to improve your business.',
       ctaProjects: 'View Projects',
       ctaContact: 'Contact Me'
     },
@@ -36,37 +36,29 @@ const translations = {
       titleA: 'About',
       titleB: 'Me',
       subtitle:
-        "I'm a Systems-oriented engineer focused on building reliable, maintainable software and empowering development teams through better tools and processes.",
+        "I'm Juan, a technology‑driven developer focused on building scalable systems by combining data analysis & metrics with the development and maintenance of ERPs and websites.",
       philosophyTitle: 'Coding Philosophy',
       p1:
-        'I have a background in systems and software engineering (UNLP), building scalable services and developer tools. I enjoy breaking down complex problems into simple, testable components and iterating quickly with clear goals. My work emphasizes maintainability, observability, and pragmatic trade-offs.',
+        'I have experience with different programming paradigms and languages, and building scalable systems. My approach is to break down complex problems into simple, testable components, and iterate with clear goals for each one.',
       p2:
-        "I prioritize learning and collaboration: mentoring teammates, writing clear documentation, and improving developer experience. I'm comfortable across the stack and enjoy contributing where I have the most impact—often at the API-contract, performance bottleneck, or developer workflow level.",
+        "I'm also passionate about web design and user experience, combining UX/UI design skills with development techniques to deliver the best possible experience for end users.",
       principlesTitle: 'Core Principles',
       valuesTitle: 'Core Values',
       impactTitle: 'Areas of Impact',
       values: [
         {
+          title: 'Pragmatic Solutions',
+          description: 'Focused on real impact and practical trade-offs.'
+        },
+        {
           title: 'Clean Architecture',
           description:
-            'Applying clean architecture principles to build maintainable and well-structured applications'
-        },
-        {
-          title: 'Pragmatic Solutions',
-          description: 'Focusing on real impact and practical trade-offs instead of perfect abstractions'
-        },
-        {
-          title: 'Team Collaboration',
-          description: 'Knowledge sharing, clear communication, and effective collaboration within teams'
-        },
-        {
-          title: 'Observability',
-          description: 'Writing debuggable code and using logging to better understand system behavior'
+            'I apply clean architecture principles to build maintainable, well-structured applications.'
         }
       ],
       principles: [
         {
-          title: 'Systems Thinking',
+          title: 'Systematic Thinking',
           description: 'Understanding how components interact and optimizing the whole system'
         },
         {
@@ -96,7 +88,7 @@ const translations = {
         'Improving developer experience and workflows'
       ],
       approachBadge: 'My Approach to Coding',
-      quote: '“Building software that is easy to understand, maintain, and work with.”',
+      quote: '“Clean code, smooth interfaces, and people-centered experiences.”',
       ctaTitle: 'Interested in Working Together?',
       ctaText:
         'If you’re looking for support in software development, IT operations, or building clean and reliable web solutions, I’m open to discussing how I can contribute.',
@@ -292,7 +284,7 @@ const translations = {
         'Análisis de Datos'
       ],
       intro:
-        'Profesional de Soporte IT, desarrollador web y estudiante de Sistemas. Construyo experiencias web limpias y funcionales y brindo soporte técnico confiable, siempre enfocado en claridad, rendimiento y soluciones reales.',
+        'Analista en soporte IT y desarrollador web. Construyo experiencias web limpias y funcionales, y brindo soluciones sólidas en sistemas informáticos para mejorar tu empresa.',
       ctaProjects: 'Ver Proyectos',
       ctaContact: 'Contactarme'
     },
@@ -301,12 +293,12 @@ const translations = {
       titleA: 'Sobre',
       titleB: 'mí',
       subtitle:
-        'Soy un perfil orientado a sistemas, enfocado en construir software confiable y mantenible, y en potenciar a los equipos de desarrollo con mejores herramientas y procesos.',
+        'Soy Juan, un desarrollador apasionado por la tecnología y mi objetivo es brindar soluciones escalables en sistemas combinando habilidades, tanto en análisis de datos y métricas, como en desarrollo y mantenimiento de ERPs/webs.',
       philosophyTitle: 'Filosofía de Programación',
       p1:
-        'Tengo formación en sistemas e ingeniería de software (UNLP), construyendo servicios escalables y herramientas para desarrolladores. Disfruto descomponer problemas complejos en componentes simples y testeables, e iterar rápidamente con objetivos claros. Mi trabajo prioriza la mantenibilidad, la observabilidad y los trade-offs pragmáticos.',
+        'Tengo experiencia en diferentes paradigmas y lenguajes de programación, y construyendo sistemas escalables. Mi forma de hacerlo es descomponiendo problemas complejos en componentes simples y testeables, e iterando con objetivos claros en cada uno de ellos.',
       p2:
-        'Priorizo el aprendizaje y la colaboración: mentoría, documentación clara y mejora de la experiencia de desarrollo. Me siento cómodo en todo el stack y disfruto aportar donde más impacto genero—muchas veces en contratos de API, cuellos de botella de performance o flujos de trabajo.',
+        'Además soy un apasionado por el diseño web y la experiencia del usuario, complemento habilidades de diseño UX/UI con técnicas de desarrollo para brindar la mejor experiencia del usuario final.',
       principlesTitle: 'Principios',
       valuesTitle: 'Valores',
       impactTitle: 'Áreas de impacto',
@@ -314,24 +306,16 @@ const translations = {
         {
           title: 'Arquitectura Limpia',
           description:
-            'Aplicando principios de arquitectura limpia para construir aplicaciones mantenibles y bien estructuradas'
+            'Aplico principios de arquitectura limpia para construir aplicaciones mantenibles y bien estructuradas'
         },
         {
           title: 'Soluciones Pragmáticas',
-          description: 'Enfocado en impacto real y trade-offs prácticos, no en abstracciones perfectas'
-        },
-        {
-          title: 'Colaboración en Equipo',
-          description: 'Compartir conocimiento, comunicación clara y colaboración efectiva dentro del equipo'
-        },
-        {
-          title: 'Observabilidad',
-          description: 'Escribir código depurable y usar logging para entender mejor el comportamiento del sistema'
+          description: 'Enfocado en impacto real y trade-offs prácticos.'
         }
       ],
       principles: [
         {
-          title: 'Pensamiento Sistémico',
+          title: 'Pensamiento Sistemático',
           description: 'Entender cómo interactúan los componentes y optimizar el sistema completo'
         },
         {
@@ -361,7 +345,7 @@ const translations = {
         'Mejorar la experiencia de desarrollo y los flujos de trabajo'
       ],
       approachBadge: 'Mi enfoque al programar',
-      quote: '“Construir software fácil de entender, mantener y actualizar.”',
+      quote: '“Código limpio, interfaces fluidas y experiencias centradas en las personas.”',
       ctaTitle: '¿Trabajamos juntos?',
       ctaText:
         'Si buscás soporte IT para tus sistemas,  o soluciones web limpias y confiables, escribime y conversamos.',
