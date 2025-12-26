@@ -4,7 +4,7 @@ import { FiMail, FiSend, FiMapPin, FiPhone, FiCheckCircle, FiAlertCircle, FiGith
 import { useI18n } from '../i18n';
 
 export default function Contact() {
-  const { t } = useI18n();
+  const { t, language } = useI18n();
   const [form, setForm] = useState({ 
     name: '', 
     email: '', 
@@ -27,26 +27,36 @@ export default function Contact() {
     return null;
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     const err = validate();
     if (err) {
       setStatus({ type: 'error', message: err });
       return;
     }
-    
+
     setIsSubmitting(true);
-    
-    // Simulate API call delay
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    setStatus({ 
-      type: 'success', 
-      message: t('contact.success')
-    });
-    
+
+    const redirectMessage = language === 'es'
+      ? 'Se ha redireccionado a WhatsApp.'
+      : 'Redirected to WhatsApp chat.';
+
+    const whatsappNumber = '54923171471695';
+    const composedMessage = [
+      `Hola Juan, soy ${form.name}.`,
+      `Mi correo es ${form.email}.`,
+      form.subject ? `Asunto: ${form.subject}.` : null,
+      `Mensaje: ${form.message}`
+    ]
+      .filter(Boolean)
+      .join(' ');
+
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(composedMessage)}`;
+
+    setStatus({ type: 'success', message: redirectMessage });
     setForm({ name: '', email: '', subject: '', message: '' });
+    window.location.href = whatsappUrl;
     setIsSubmitting(false);
   };
 
