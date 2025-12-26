@@ -15,7 +15,7 @@ function App() {
     <div className="min-h-screen bg-white text-slate-900 dark:bg-slate-900 dark:text-slate-100 transition-colors">
       <Navbar />
 
-      <main className="max-w-4xl mx-auto px-6 pb-24">
+      <main className="max-w-6xl mx-auto px-6 pb-24">
         <div className="pt-8">
           <ThemeToggle />
         </div>

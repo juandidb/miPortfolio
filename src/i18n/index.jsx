@@ -210,7 +210,7 @@ const translations = {
         emailInvalid: 'Please enter a valid email address.',
         messageTooShort: 'Message must be at least 10 characters.'
       },
-      success: "Message sent successfully! I'll get back to you within 24 hours.",
+      success: 'Redirected to WhatsApp chat.',
       infoTitle: 'Contact Information',
       connectTitle: 'Connect With Me',
       availabilityBadge: 'Currently Available',
@@ -276,7 +276,7 @@ const translations = {
     },
     hero: {
       roles: [
-        'Desarrollador de Software',
+        'Desarrollo de Software',
         'Soporte IT',
         'Desarrollo Web',
         'Diseño UX/UI',
@@ -467,7 +467,7 @@ const translations = {
         emailInvalid: 'Por favor ingresá un email válido.',
         messageTooShort: 'El mensaje debe tener al menos 10 caracteres.'
       },
-      success: '¡Mensaje enviado! Te respondo dentro de las próximas 24 horas.',
+      success: 'Se ha redireccionado a WhatsApp.',
       infoTitle: 'Información de contacto',
       connectTitle: 'Conectá conmigo',
       availabilityBadge: 'Disponible',

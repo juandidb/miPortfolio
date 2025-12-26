@@ -193,7 +193,7 @@ export default function Navbar() {
           </motion.div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-4">
+          <div className="hidden md:flex items-center gap-2.5">
             {/* Navigation Links */}
             <div className="flex items-center bg-gray-100 dark:bg-gray-800 rounded-full px-1 py-1">
               {navLinks.map((link, index) => (
@@ -206,7 +206,7 @@ export default function Navbar() {
                   }}
                   variants={navItemVariants}
                   whileHover="hover"
-                  className={`relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                  className={`relative px-2.5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                     activeSection === link.href
                       ? 'text-white bg-gradient-to-r from-primary to-purple-600 shadow-lg'
                       : 'text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary'
@@ -246,7 +246,7 @@ export default function Navbar() {
               whileTap={{ scale: 0.95 }}
               onClick={toggleLanguage}
               aria-label={t('langSwitchAria')}
-              className="p-2 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors flex items-center gap-2"
+              className="px-2 py-2 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors flex items-center gap-1.5"
             >
               <FiGlobe className="w-4 h-4" />
               <span className="text-xs font-semibold">
@@ -263,7 +263,7 @@ export default function Navbar() {
               }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="ml-2 px-5 py-2.5 bg-gradient-to-r from-primary to-purple-600 text-white rounded-full font-semibold text-sm hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 flex items-center gap-2"
+              className="ml-2 px-3.5 py-2 bg-gradient-to-r from-primary to-purple-600 text-white rounded-full font-semibold text-sm hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 flex items-center gap-2"
             >
               {t('navbar.hireMe')}
               <FiChevronDown className="w-4 h-4 rotate-270" />
