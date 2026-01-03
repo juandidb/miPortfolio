@@ -13,7 +13,8 @@ export default function Projects() {
     description:
       typeof p.description === 'object'
         ? (p.description?.[language] ?? p.description?.en ?? '')
-        : p.description
+        : p.description,
+    category: typeof p.category === 'object' ? (p.category?.[language] ?? p.category?.en ?? '') : p.category
   }));
   const containerVariants = {
     hidden: { opacity: 0 },

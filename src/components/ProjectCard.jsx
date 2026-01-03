@@ -144,6 +144,12 @@ export default function ProjectCard({ project, index }) {
                 {t('projects.card.live')}
               </motion.a>
             )}
+            {!project.github && !project.live && (
+              <span className="flex items-center gap-2 text-sm font-medium text-gray-500 dark:text-gray-400">
+                <ExternalLinkIcon className="w-5 h-5 opacity-60" />
+                En desarrollo
+              </span>
+            )}
           </div>
         </div>
       </div>

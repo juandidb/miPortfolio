@@ -9,6 +9,40 @@ export default function WorkExperience() {
   const items = [
     { 
       title: {
+        en: 'FullStack Developer Freelance',
+        es: 'Desarrollador FullStack Freelance'
+      },
+      company: 'div.dev',
+      period: '2023 — Actualidad',
+      location: 'Remote',
+      type: {
+        en: 'Freelance',
+        es: 'Freelance'
+      },
+      desc: {
+        en: 'I develop and maintain websites and web applications for various clients, prioritizing accessibility (WCAG AA), performance, and best practices. I work with technologies like React, Node.js and TypeScript—among others—to build scalable, maintainable solutions focused on user experience and product stability.',
+        es: 'Desarrollo y mantengo sitios y aplicaciones web para distintos clientes, priorizando accesibilidad (WCAG AA), rendimiento y buenas prácticas. Trabajo con tecnologías como React, Node.js y TypeScript -entre otras- para construir soluciones escalables y fáciles de mantener, con foco en la experiencia de usuario y la estabilidad del producto.'
+      },
+      achievements: {
+        en: [
+          'Successfully delivered over 6 projects with a 100% client satisfaction rate',
+          'Optimized website load times by an average of 30% through efficient coding practices and asset management',
+          'Implemented responsive design patterns that improved mobile user engagement.'
+        ],
+        es: [
+          'Entregué más de 6 proyectos con 100% de satisfacción de clientes',
+          'Optimicé tiempos de carga en un promedio del 30% con buenas prácticas y gestión de assets',
+          'Implementé patrones de diseño responsivo que mejoraron el engagement en mobile'
+        ]
+      },
+      technologies: ['JavaScript', 'TypeScript', 'React', 'Node.js', 'HTML/CSS', 'Tailwind', 'Accessibility (WCAG AA)', 'UI/UX Design', 'PostgreSQL'],
+      industry: {
+        en: 'Web Development',
+        es: 'Desarrollo Web'
+      }
+    },
+    { 
+      title: {
         en: 'IT Support Specialist',
         es: 'Especialista en Soporte IT'
       },
@@ -39,40 +73,6 @@ export default function WorkExperience() {
       industry: {
         en: 'IT Services & Consulting',
         es: 'Servicios IT y Consultoría'
-      }
-    },
-    { 
-      title: {
-        en: 'FrontEnd Developer Freelance',
-        es: 'Desarrollador Frontend Freelance'
-      },
-      company: 'Self-Employed',
-      period: '2021 — 2023',
-      location: 'Remote',
-      type: {
-        en: 'Freelance',
-        es: 'Freelance'
-      },
-      desc: {
-        en: 'Developed and maintained responsive websites and web applications for various clients, ensuring optimal performance and user experience across devices. Collaborated closely with clients to understand their requirements and deliver tailored solutions that met their business goals.',
-        es: 'Desarrollé y mantuve sitios web y aplicaciones responsivas para distintos clientes, asegurando performance y buena experiencia de usuario en múltiples dispositivos. Colaboré con clientes para entender necesidades y entregar soluciones a medida alineadas a sus objetivos.'
-      },
-      achievements: {
-        en: [
-          'Successfully delivered over 6 projects with a 100% client satisfaction rate',
-          'Optimized website load times by an average of 30% through efficient coding practices and asset management',
-          'Implemented responsive design patterns that improved mobile user engagement.'
-        ],
-        es: [
-          'Entregué más de 6 proyectos con 100% de satisfacción de clientes',
-          'Optimicé tiempos de carga en un promedio del 30% con buenas prácticas y gestión de assets',
-          'Implementé patrones de diseño responsivo que mejoraron el engagement en mobile'
-        ]
-      },
-      technologies: ['JavaScript', 'React', 'HTML/CSS', 'UI/UX Design', 'Web Development', 'Int', 'PostgreSQL'],
-      industry: {
-        en: 'Web Development',
-        es: 'Desarrollo Web'
       }
     }
   ];

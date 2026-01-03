@@ -55,6 +55,15 @@ const translations = {
           description:
             'I apply clean architecture principles to build maintainable, well-structured applications.'
         }
+        ,
+        {
+          title: 'Team Collaboration',
+          description: 'Knowledge sharing, clear communication, and effective collaboration within teams'
+        },
+        {
+          title: 'Observability',
+          description: 'Writing debuggable code and using logging to better understand system behavior'
+        }
       ],
       principles: [
         {
@@ -296,9 +305,9 @@ const translations = {
         'Soy Juan, un desarrollador apasionado por la tecnología y mi objetivo es brindar soluciones escalables en sistemas combinando habilidades, tanto en análisis de datos y métricas, como en desarrollo y mantenimiento de ERPs/webs.',
       philosophyTitle: 'Filosofía de Programación',
       p1:
-        'Tengo experiencia en diferentes paradigmas y lenguajes de programación, y construyendo sistemas escalables. Mi forma de hacerlo es descomponiendo problemas complejos en componentes simples y testeables, e iterando con objetivos claros en cada uno de ellos.',
+        'Mi experiencia abarca desde la creación de interfaces dinámicas y atractivas hasta la implementación de soluciones backend robustas. Utilizo tecnologías como React, Node.js, TypeScript, y Tailwind para ofrecer experiencias web rápidas y de alto rendimiento.',
       p2:
-        'Además soy un apasionado por el diseño web y la experiencia del usuario, complemento habilidades de diseño UX/UI con técnicas de desarrollo para brindar la mejor experiencia del usuario final.',
+        'Además soy proactivo en la resolución de problemas técnicos y la gestión de infraestructuras IT. Mi objetivo es asegurar la continuidad operativa de los sistemas y garantizar la máxima eficiencia en entornos de trabajo digitales.',
       principlesTitle: 'Principios',
       valuesTitle: 'Valores',
       impactTitle: 'Áreas de impacto',
@@ -311,6 +320,15 @@ const translations = {
         {
           title: 'Soluciones Pragmáticas',
           description: 'Enfocado en impacto real y trade-offs prácticos.'
+        }
+        ,
+        {
+          title: 'Colaboración en Equipo',
+          description: 'Compartir conocimiento, comunicación clara y colaboración efectiva dentro de los equipos'
+        },
+        {
+          title: 'Observabilidad',
+          description: 'Código fácil de depurar y uso de logging/monitoring para comprender el comportamiento del sistema'
         }
       ],
       principles: [

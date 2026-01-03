@@ -1,17 +1,50 @@
 export const projects = [
   {
-    id: 'esopaciosanmarcos',
+    id: 'deli-app',
     title: {
-      en: 'Espacio San Marcos Demo',
-      es: 'Demo Espacio San Marcos'
+      en: 'deli.app - WebApp',
+      es: 'deli.app - WebApp'
     },
     description: {
-      en: 'A Landing page designed for Espacio San Marcos, focused on clearly communicating its wellness offering, highlighting services, values, and contact options to turn visits into real inquiries.',
-      es: 'Landing page diseñada para Espacio San Marcos, enfocada en comunicar claramente su propuesta de bienestar, destacando servicios, valores y opciones de contacto para convertir visitas en consultas reales.'
+      en: 'A delivery webapp for ordering and tracking food and items, built with modern web technologies.',
+      es: 'Webapp de delivery para pedir y rastrear comidas y envíos, construida con tecnologías web modernas.'
     },
-    tech: ['JavaScript', 'HTML5', 'CSS3'],
-    github: 'https://juandidb.github.io/EspacioSanMarcos/',
-    live: 'https://juandidb.github.io/EspacioSanMarcos/'
+    tech: ['React', 'Node.js', 'Tailwind CSS', 'TypeScript', 'SQL', 'API Integrations'],
+    category: { en: 'Web Development', es: 'Desarrollo Web' },
+    image: '/assets/del.app.png',
+    github: '',
+    live: ''
+  },
+  {
+    id: 'divdev-landing',
+    title: {
+      en: 'div.dev - Landing Page',
+      es: 'div.dev - Landing Page'
+    },
+    description: {
+      en: 'A modern and responsive landing page created for div.dev, focused on clear communication and conversion.',
+      es: 'Landing page moderna y responsiva creada para div.dev, enfocada en comunicación clara y conversión.'
+    },
+    tech: ['React', 'TypeScript', 'Tailwind CSS'],
+    category: { en: 'Web Development', es: 'Desarrollo Web' },
+    image: '/assets/divdev.png',
+    github: '',
+    live: ''
+  },
+  {
+    id: 'portfolio-vite',
+    title: {
+      en: 'Personal Portfolio (This site)',
+      es: 'Portfolio Personal (Este sitio)'
+    },
+    description: {
+      en: 'The portfolio website built with React, Vite and Tailwind. Demonstrates projects, work experience and responsive design.',
+      es: 'Sitio de portfolio construido con React, Vite y Tailwind. Muestra proyectos, experiencia laboral y diseño responsivo.'
+    },
+    tech: ['React', 'Vite', 'Tailwind CSS', 'JavaScript'],
+    image: '/assets/portfolio.png',
+    github: 'https://github.com/juandidb/portfolio',
+    live: ''
   },
   {
     id: 'rInfoDarkMode',
@@ -24,7 +57,40 @@ export const projects = [
       es: 'Actualización del entorno CMRE (usado por la Universidad Nacional de La Plata) con mejoras en la interfaz UX/UI.'
     },
     tech: ['JAVA', 'UX Design'],
+    category: { en: 'JAVA Development', es: 'Desarrollo JAVA' },
+    image: '/assets/rinfo-darkmode.png',
     github: 'https://github.com/juandidb/rInfo-3.2',
     live: ''
+  },
+  {
+    id: 'tasks-api',
+    title: {
+      en: 'Task Manager API',
+      es: 'API de Gestión de Tareas'
+    },
+    description: {
+      en: 'A RESTful API for managing tasks built with Node.js, Express and PostgreSQL. Includes authentication and CRUD endpoints.',
+      es: 'API REST para gestionar tareas construida con Node.js, Express y PostgreSQL. Incluye autenticación y endpoints CRUD.'
+    },
+    tech: ['Node.js', 'Express', 'PostgreSQL', 'TypeScript'],
+    image: '/assets/tasks-api.svg',
+    github: 'https://github.com/juandidb/tasks-api',
+    live: ''
+  }
+  ,
+  {
+    id: 'esopaciosanmarcos',
+    title: {
+      en: 'Espacio San Marcos Demo',
+      es: 'Demo Espacio San Marcos'
+    },
+    description: {
+      en: 'Ultra-light landing page for a local cafe built with vanilla JS, HTML and CSS.',
+      es: 'Landing Page ultraliviana para un cafe local creada con JS nativo, HTML y CSS.'
+    },
+    tech: ['JavaScript', 'HTML5', 'CSS3'],
+    image: '/assets/sanmarcos.png',
+    github: 'https://juandidb.github.io/EspacioSanMarcos/',
+    live: 'https://juandidb.github.io/EspacioSanMarcos/'
   }
 ]
