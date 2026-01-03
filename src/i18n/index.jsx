@@ -491,7 +491,7 @@ const translations = {
       availabilityBadge: 'Disponible',
       availabilityTitle: 'Trabajemos juntos',
       availabilityText:
-        'Actualmente estoy abierto a nuevas oportunidades, colaboraciones y proyectos interesantes. Ya sea un rol full-time o un proyecto freelance, hablemos sobre cómo podemos crear algo increíble.',
+        'Actualmente estoy abierto a nuevas oportunidades, colaboraciones y proyectos. Ya sea un rol full-time o un proyecto freelance, hablemos sobre cómo podemos crearlo.',
       availabilityBullets: {
         responseTime: 'Tiempo de respuesta: Dentro de 24 horas',
         availability: 'Disponible para: roles full-time y contratos',
