@@ -39,70 +39,67 @@ const translations = {
         "I'm Juan, a technology‑driven developer focused on building scalable systems by combining data analysis & metrics with the development and maintenance of ERPs and websites.",
       philosophyTitle: 'Coding Philosophy',
       p1:
-        'I have experience with different programming paradigms and languages, and building scalable systems. My approach is to break down complex problems into simple, testable components, and iterate with clear goals for each one.',
+        'My experience ranges from creating dynamic and attractive interfaces to implementing robust backend solutions. I use technologies like React, Node.js, TypeScript, and Tailwind to deliver fast, high-performance web experiences.',
       p2:
-        "I'm also passionate about web design and user experience, combining UX/UI design skills with development techniques to deliver the best possible experience for end users.",
+        'I am also proactive in solving technical problems and managing IT infrastructures. My goal is to ensure operational continuity of systems and guarantee maximum efficiency in digital work environments.',
       principlesTitle: 'Core Principles',
       valuesTitle: 'Core Values',
       impactTitle: 'Areas of Impact',
       values: [
         {
+          title: 'Clean Architecture',
+          description: 'I apply clean architecture principles to build maintainable and well-structured applications.'
+        },
+        {
           title: 'Pragmatic Solutions',
           description: 'Focused on real impact and practical trade-offs.'
         },
         {
-          title: 'Clean Architecture',
-          description:
-            'I apply clean architecture principles to build maintainable, well-structured applications.'
-        }
-        ,
-        {
           title: 'Team Collaboration',
-          description: 'Knowledge sharing, clear communication, and effective collaboration within teams'
+          description: 'Knowledge sharing, clear communication, and effective collaboration within teams.'
         },
         {
           title: 'Observability',
-          description: 'Writing debuggable code and using logging to better understand system behavior'
+          description: 'Debuggable code and use of logging/monitoring to understand system behavior.'
         }
       ],
       principles: [
         {
           title: 'Systematic Thinking',
-          description: 'Understanding how components interact and optimizing the whole system'
+          description: 'Understanding how components interact and optimizing the whole system.'
         },
         {
           title: 'Iterative Improvement',
-          description: 'Shipping value quickly and refining based on feedback and metrics'
+          description: 'Delivering value quickly and refining with feedback and metrics.'
         },
         {
           title: 'Developer Experience',
-          description: 'Prioritizing tools and workflows that empower engineering teams'
+          description: 'Prioritizing tools and workflows that empower engineering teams.'
         },
         {
           title: 'Technical Leadership',
-          description: 'Guiding technical decisions and setting quality standards'
+          description: 'Guiding technical decisions and setting quality standards.'
         }
-      ]
-      ,
+      ],
       impactTechnicalTitle: 'Technical Foundations',
       impactTeamTitle: 'Team Collaboration',
       impactTechnicalBullets: [
-        'Contributing to architecture decisions and technical discussions',
-        'Writing high-quality, maintainable code and participating in code reviews',
-        'Performance awareness and basic scalability considerations'
+        'Contributing to architecture decisions and technical discussions.',
+        'Writing maintainable code and participating in code reviews.',
+        'Performance awareness and basic scalability considerations.'
       ],
       impactTeamBullets: [
-        'Knowledge sharing and clear technical documentation',
-        'Encouraging best practices and collective problem-solving',
-        'Improving developer experience and workflows'
+        'Knowledge sharing and clear technical documentation.',
+        'Encouraging best practices and collective problem-solving.',
+        'Improving developer experience and workflows.'
       ],
-      approachBadge: 'My Approach to Coding',
+      approachBadge: 'My approach to coding',
       quote: '“Clean code, smooth interfaces, and people-centered experiences.”',
-      ctaTitle: 'Interested in Working Together?',
+      ctaTitle: 'Shall we work together?',
       ctaText:
-        'If you’re looking for support in software development, IT operations, or building clean and reliable web solutions, I’m open to discussing how I can contribute.',
+        'If you are looking for IT support for your systems, or clean and reliable web solutions, write to me and let’s talk.',
       ctaWork: 'View My Work',
-      ctaContact: 'Get In Touch'
+      ctaContact: 'Contact Me'
     },
     skills: {
       titleA: 'Technical',

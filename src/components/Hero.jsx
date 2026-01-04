@@ -29,7 +29,7 @@ export default function Hero() {
             transition={{ duration: 0.6 }}
             className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-gray-900 dark:text-white hover:text-primary dark:hover:text-primary transition-colors duration-300 cursor-pointer mb-6"
           >
-            Juan Di Benedetto
+            Juan <span className="text-primary">Di Benedetto</span>
           </motion.h1>
           
           {/* Texto animado de profesiones */}
