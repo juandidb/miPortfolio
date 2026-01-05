@@ -1,24 +1,54 @@
+import { useEffect, useState } from 'react'
+import { PlayCircle, PauseCircle } from 'lucide-react';
 import { motion } from 'framer-motion'
 import { TypeAnimation } from 'react-type-animation'
 import { useI18n } from '../i18n/index.jsx'
+import { useTheme } from '../context/ThemeContext.jsx'
 
 export default function Hero() {
   const { t, language } = useI18n();
+  const { theme } = useTheme();
+  const [videoActive, setVideoActive] = useState(false);
 
   const roles = t('hero.roles');
   const roleSequence = Array.isArray(roles)
     ? roles.flatMap((role) => [role, 1500, { delete: String(role).length }])
     : [];
 
+  useEffect(() => {
+    if (theme !== 'dark') {
+      setVideoActive(false);
+    }
+  }, [theme]);
+
+  const showVideo = theme === 'dark' && videoActive;
+
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center relative">
-      {/* Fondo opcional si quieres agregar un efecto */}
-      <div className="absolute inset-0 -z-10"></div>
+    <section
+      id="hero"
+      className="relative w-full overflow-hidden flex items-center justify-center min-h-[80vh] lg:min-h-screen py-16 md:py-20"
+    >
+      {/* Video de fondo */}
+      {showVideo && (
+        <div className="absolute top-0 left-0 w-full h-full z-0 overflow-hidden pointer-events-none">
+          <video
+            className="absolute top-0 left-0 w-full h-full object-cover brightness-110 contrast-110"
+            src="assets/Portfolio_Hero_Video_Generation.mp4"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            aria-hidden="true"
+          />
+          <div className="absolute top-0 left-0 w-full h-full bg-slate-900/30 dark:bg-slate-950/40" />
+        </div>
+      )}
       
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }} 
-          animate={{ opacity: 1, y: 0 }} 
+      <div className="relative z-10 w-full px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1 }}
           className="max-w-4xl mx-auto text-center"
         >
@@ -73,17 +103,23 @@ export default function Hero() {
             </a>
           </motion.div>
           
-          {/* Scroll indicator opcional */}
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 1 }}
-            className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-          >
-            <div className="animate-bounce w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center">
-              <div className="w-1 h-3 bg-gray-400 rounded-full mt-2"></div>
-            </div>
-          </motion.div>
+
+          {/* Botón minimalista para activar/desactivar animación (solo en dark, solo en Hero) */}
+          {theme === 'dark' && (
+            <motion.button
+              initial={{ opacity: 0, x: 70 }}
+              animate={{ opacity: 0.85, x: 30 }}
+              whileHover={{ opacity: 1, scale: 1.1 }}
+              transition={{ duration: 0.5, delay: 0.7 }}
+              onClick={() => setVideoActive((v) => !v)}
+              aria-label={videoActive ? 'Desactivar animación' : 'Activar animación'}
+              className="absolute top-1/2 right-[22%] z-20 p-1.5 rounded-full bg-slate-900/40 text-white border border-white/10 hover:bg-slate-900/60 focus:outline-none transition-all duration-200 flex items-center justify-center"
+              style={{ transform: 'translateY(calc(-50% - 15px))' }}
+            >
+              {videoActive ? <PauseCircle className="w-5 h-5" /> : <PlayCircle className="w-5 h-5" />}
+            </motion.button>
+          )}
+
         </motion.div>
       </div>
     </section>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiMail, FiSend, FiMapPin, FiPhone, FiCheckCircle, FiAlertCircle, FiGithub, FiLinkedin, FiUser, FiMessageSquare } from 'react-icons/fi';
+import { Mail, Send, MapPin, Phone, CheckCircle, AlertCircle, Github, Linkedin, User, MessageSquare } from 'lucide-react';
 import { useI18n } from '../i18n';
 
 export default function Contact() {
@@ -62,21 +62,21 @@ export default function Contact() {
 
   const contactInfo = [
     {
-      icon: <FiMail className="w-5 h-5" />,
+      icon: <Mail className="w-5 h-5" />,
       title: t('contact.info.email'),
       value: 'juandidb@gmail.com',
       link: 'mailto:juandibenedetto99@gmail.com',
       color: 'from-blue-500 to-cyan-500'
     },
     {
-      icon: <FiPhone className="w-5 h-5" />,
+      icon: <Phone className="w-5 h-5" />,
       title: t('contact.info.phone'),
       value: '+54 9 2317 1471695',
       link: 'tel:+54923171471695',
       color: 'from-green-500 to-emerald-500'
     },
     {
-      icon: <FiMapPin className="w-5 h-5" />,
+      icon: <MapPin className="w-5 h-5" />,
       title: t('contact.info.location'),
       value: t('contact.info.locationValue'),
       link: 'https://maps.google.com/?q=Buenos+Aires',
@@ -86,13 +86,13 @@ export default function Contact() {
 
   const socialLinks = [
     {
-      icon: <FiGithub className="w-5 h-5" />,
+      icon: <Github className="w-5 h-5" />,
       label: 'GitHub',
       url: 'https://github.com/juandidb',
       color: 'hover:bg-gray-800 hover:text-white dark:hover:bg-gray-700'
     },
     {
-      icon: <FiLinkedin className="w-5 h-5" />,
+      icon: <Linkedin className="w-5 h-5" />,
       label: 'LinkedIn',
       url: 'https://linkedin.com/in/juan-di-benedetto',
       color: 'hover:bg-blue-600 hover:text-white'
@@ -182,7 +182,7 @@ export default function Contact() {
           >
             <div className="flex items-center gap-3 mb-6">
               <div className="p-3 rounded-xl bg-gradient-to-br from-primary to-purple-600">
-                <FiMessageSquare className="w-6 h-6 text-white" />
+                <MessageSquare className="w-6 h-6 text-white" />
               </div>
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
                 {t('contact.formTitle')}
@@ -196,7 +196,7 @@ export default function Contact() {
                     {t('contact.name')}
                   </label>
                   <div className="relative">
-                    <FiUser className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                    <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
                     <input
                       type="text"
                       name="name"
@@ -216,7 +216,7 @@ export default function Contact() {
                     {t('contact.email')}
                   </label>
                   <div className="relative">
-                    <FiMail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                    <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
                     <input
                       type="email"
                       name="email"
@@ -281,9 +281,9 @@ export default function Contact() {
                   >
                     <div className="flex items-center gap-3">
                       {status.type === 'error' ? (
-                        <FiAlertCircle className="w-5 h-5 text-red-500" />
+                        <AlertCircle className="w-5 h-5 text-red-500" />
                       ) : (
-                        <FiCheckCircle className="w-5 h-5 text-green-500" />
+                        <CheckCircle className="w-5 h-5 text-green-500" />
                       )}
                       <span className={`font-medium ${
                         status.type === 'error' 
@@ -313,7 +313,7 @@ export default function Contact() {
                   </>
                 ) : (
                   <>
-                    <FiSend className="w-5 h-5" />
+                    <Send className="w-5 h-5" />
                     {t('contact.send')}
                   </>
                 )}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FiHeart, FiCoffee, FiCode, FiGithub, FiLinkedin, FiMail, FiArrowUp, FiMapPin, FiPhone } from 'react-icons/fi';
+import { Heart, Coffee, Code, Github, Linkedin, Mail, ArrowUp, MapPin, Phone, Palette, Zap, Film, Layers } from 'lucide-react';
 import { useI18n } from '../i18n';
 
 export default function Footer() {
@@ -18,19 +18,19 @@ export default function Footer() {
 
   const socialLinks = [
     {
-      icon: <FiGithub className="w-5 h-5" />,
+      icon: <Github className="w-5 h-5" />,
       label: 'GitHub',
       url: 'https://github.com/juandidb',
       color: 'hover:bg-gray-800 hover:text-white dark:hover:bg-gray-700'
     },
     {
-      icon: <FiLinkedin className="w-5 h-5" />,
+      icon: <Linkedin className="w-5 h-5" />,
       label: 'LinkedIn',
       url: 'https://linkedin.com/in/juan-di-benedetto',
       color: 'hover:bg-blue-600 hover:text-white'
     },
     {
-      icon: <FiMail className="w-5 h-5" />,
+      icon: <Mail className="w-5 h-5" />,
       label: 'Email',
       url: 'mailto:juandibenedetto99@gmail.com',
       color: 'hover:bg-red-500 hover:text-white'
@@ -39,27 +39,27 @@ export default function Footer() {
 
   const contactInfo = [
     {
-      icon: <FiMail className="w-4 h-4" />,
+      icon: <Mail className="w-4 h-4" />,
       value: 'juandibenedetto99@gmail.com',
       link: 'mailto:juandibenedetto99@gmail.com'
     },
     {
-      icon: <FiPhone className="w-4 h-4" />,
+      icon: <Phone className="w-4 h-4" />,
       value: '+54 2317 471695',
       link: 'tel:+542317471695'
     },
     {
-      icon: <FiMapPin className="w-4 h-4" />,
+      icon: <MapPin className="w-4 h-4" />,
       value: t('contact.info.locationValue'),
       link: 'https://maps.google.com/?q=Buenos+Aires'
     }
   ];
 
   const techStack = [
-    { name: 'React', icon: '⚛️', color: 'bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300' },
-    { name: 'Tailwind CSS', icon: '🎨', color: 'bg-cyan-100 dark:bg-cyan-900/30 text-cyan-800 dark:text-cyan-300' },
-    { name: 'Vite', icon: '⚡', color: 'bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300' },
-    { name: 'Framer Motion', icon: '✨', color: 'bg-pink-100 dark:bg-pink-900/30 text-pink-800 dark:text-pink-300' }
+    { name: 'React', icon: <Code className="w-5 h-5 text-primary" />, color: 'bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300' },
+    { name: 'Tailwind CSS', icon: <Palette className="w-5 h-5 text-cyan-600" />, color: 'bg-cyan-100 dark:bg-cyan-900/30 text-cyan-800 dark:text-cyan-300' },
+    { name: 'Vite', icon: <Zap className="w-5 h-5 text-purple-600" />, color: 'bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300' },
+    { name: 'Framer Motion', icon: <Layers className="w-5 h-5 text-pink-600" />, color: 'bg-pink-100 dark:bg-pink-900/30 text-pink-800 dark:text-pink-300' }
   ];
 
   const containerVariants = {
@@ -256,12 +256,12 @@ export default function Footer() {
                 <div className="hidden md:flex items-center gap-2">
                   <span className="text-xs">•</span>
                   <div className="flex items-center gap-1">
-                    <FiHeart className="w-3 h-3 text-red-500 animate-pulse" />
+                      <Heart className="w-3 h-3 text-red-500 animate-pulse" />
                     <span>{t('footer.bottom.craftedWithPassion')}</span>
                   </div>
                   <span className="text-xs">•</span>
                   <div className="flex items-center gap-1">
-                    <FiCoffee className="w-3 h-3 text-yellow-600" />
+                    <Coffee className="w-3 h-3 text-yellow-600" />
                     <span>{t('footer.bottom.andEndlessCoffee')}</span>
                   </div>
                 </div>
@@ -272,7 +272,7 @@ export default function Footer() {
                 variants={itemVariants}
                 className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-full border border-gray-200 dark:border-gray-700"
               >
-                <FiCode className="w-4 h-4 text-primary" />
+                <Code className="w-4 h-4 text-primary" />
                 <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                   {t('footer.bottom.builtWithTech')}
                 </span>
@@ -293,7 +293,7 @@ export default function Footer() {
                 aria-label={t('footer.bottom.backToTopAria')}
               >
                 <span>{t('footer.bottom.backToTop')}</span>
-                <FiArrowUp className="w-4 h-4 group-hover:-translate-y-1 transition-transform duration-300" />
+                <ArrowUp className="w-4 h-4 group-hover:-translate-y-1 transition-transform duration-300" />
               </motion.button>
             </div>
 
@@ -303,9 +303,9 @@ export default function Footer() {
               className="mt-6 md:hidden text-center text-xs text-gray-500 dark:text-gray-500"
             >
               <div className="flex items-center justify-center gap-2 mb-2">
-                <FiHeart className="w-3 h-3 text-red-500" />
+                <Heart className="w-3 h-3 text-red-500" />
                 <span>{t('footer.bottom.craftedWithPassion')}</span>
-                <FiCoffee className="w-3 h-3 text-yellow-600" />
+                <Coffee className="w-3 h-3 text-yellow-600" />
                 <span>{t('footer.bottom.andEndlessCoffee')}</span>
               </div>
               <div className="flex items-center justify-center gap-3 text-xs text-gray-400 dark:text-gray-600">
@@ -331,7 +331,7 @@ export default function Footer() {
         className="fixed bottom-6 right-6 md:hidden p-3 bg-gradient-to-br from-primary to-purple-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 z-40"
         aria-label={t('footer.bottom.backToTopAria')}
       >
-        <FiArrowUp className="w-5 h-5" />
+        <ArrowUp className="w-5 h-5" />
       </motion.button>
     </footer>
   );

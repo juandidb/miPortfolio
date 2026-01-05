@@ -14,18 +14,18 @@ function App() {
   return (
     <div className="min-h-screen bg-white text-slate-900 dark:bg-slate-900 dark:text-slate-100 transition-colors">
       <Navbar />
+      <Hero />
 
       <main className="max-w-6xl mx-auto px-6 pb-24">
         <div className="pt-8">
           <ThemeToggle />
         </div>
 
-        <Hero />
+        <Education />
+        <WorkExperience />
+        <Projects />
         <About />
         <Skills />
-        <Projects />
-        <WorkExperience />
-        <Education />
         <Contact />
       </main>
 

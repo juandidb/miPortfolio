@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FiBriefcase, FiCalendar, FiMapPin, FiCode, FiTool, FiCpu } from 'react-icons/fi';
+import { Briefcase, Calendar, MapPin, Code, Wrench, Cpu } from 'lucide-react';
 import { useI18n } from '../i18n/index.jsx';
 
 export default function WorkExperience() {
@@ -184,7 +184,7 @@ export default function WorkExperience() {
                     <div>
                       <div className="flex items-center gap-2 mb-2">
                         <div className="p-2 rounded-lg bg-primary/10">
-                          {index === 0 ? <FiTool className="w-4 h-4 text-primary" /> : <FiCode className="w-4 h-4 text-primary" />}
+                            {index === 0 ? <Wrench className="w-4 h-4 text-primary" /> : <Code className="w-4 h-4 text-primary" />}
                         </div>
                         <span className="text-xs font-semibold text-primary uppercase tracking-wider">
                           {item.type}
@@ -196,7 +196,7 @@ export default function WorkExperience() {
                       </h3>
                       
                       <div className="flex items-center gap-2 mt-1">
-                        <FiBriefcase className="w-4 h-4 text-gray-500 dark:text-gray-400" />
+                        <Briefcase className="w-4 h-4 text-gray-500 dark:text-gray-400" />
                         <span className="text-lg font-medium text-gray-700 dark:text-gray-300">
                           {item.company}
                         </span>
@@ -206,7 +206,7 @@ export default function WorkExperience() {
                     {/* Duration Badge */}
                     <div className="mt-2 sm:mt-0 px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-lg">
                       <div className="flex items-center gap-1 text-sm font-medium text-gray-700 dark:text-gray-300">
-                        <FiCalendar className="w-3 h-3" />
+                        <Calendar className="w-3 h-3" />
                         {item.period}
                       </div>
                     </div>
@@ -215,11 +215,11 @@ export default function WorkExperience() {
                   {/* Location and Industry */}
                   <div className="flex flex-wrap gap-4 mb-6">
                     <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-                      <FiMapPin className="w-3 h-3" />
+                      <MapPin className="w-3 h-3" />
                       {item.location}
                     </div>
                     <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-                      <FiCpu className="w-3 h-3" />
+                      <Cpu className="w-3 h-3" />
                       {item.industry}
                     </div>
                   </div>

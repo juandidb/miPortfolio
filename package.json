@@ -1,6 +1,6 @@
 {
   "name": "portfolio",
-  "homepage": "juandibenedetto.tech",
+  "homepage": "https://juandidb.github.io/miPortfolio/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -15,6 +15,7 @@
   "dependencies": {
     "clsx": "^1.2.1",
     "framer-motion": "^10.12.7",
+    "lucide-react": "^0.562.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.5.0",

@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FiCode, FiServer, FiTool, FiStar, FiTrendingUp, FiTarget } from 'react-icons/fi';
+import { Code, Server, Wrench, Star, TrendingUp, Target } from 'lucide-react';
 import { useI18n } from '../i18n/index.jsx';
 
 export default function Skills() {
@@ -81,10 +81,10 @@ export default function Skills() {
 
   const getCategoryIcon = (category) => {
     switch(category) {
-      case 'Frontend': return <FiCode className="w-6 h-6" />;
-      case 'Backend': return <FiServer className="w-6 h-6" />;
-      case 'Tools': return <FiTool className="w-6 h-6" />;
-      default: return <FiStar className="w-6 h-6" />;
+      case 'Frontend': return <Code className="w-6 h-6" />;
+      case 'Backend': return <Server className="w-6 h-6" />;
+      case 'Tools': return <Wrench className="w-6 h-6" />;
+      default: return <Star className="w-6 h-6" />;
     }
   };
 
@@ -254,7 +254,7 @@ export default function Skills() {
           <div className="max-w-4xl mx-auto mb-12">
             <div className="bg-gradient-to-br from-gray-900 to-gray-800 dark:from-gray-800 dark:to-gray-900 rounded-2xl p-8 text-white">
               <div className="flex items-center gap-3 mb-6">
-                <FiTarget className="w-8 h-8 text-primary" />
+                <Target className="w-8 h-8 text-primary" />
                 <h3 className="text-2xl font-bold">{t('skills.complementaryTitle')}</h3>
               </div>
               
@@ -321,7 +321,7 @@ export default function Skills() {
           {/* CTA */}
           <div className="text-center pt-10 border-t border-gray-200 dark:border-gray-800">
             <div className="inline-flex items-center gap-3 px-6 py-3 bg-gray-100 dark:bg-gray-800 rounded-full mb-6">
-              <FiTrendingUp className="w-5 h-5 text-primary" />
+              <TrendingUp className="w-5 h-5 text-primary" />
               <span className="text-gray-700 dark:text-gray-300 font-medium">
                 {t('skills.ctaBadge')}
               </span>

@@ -542,8 +542,7 @@ function getInitialLanguage() {
     // ignore
   }
 
-  const browser = (typeof navigator !== 'undefined' && navigator.language) ? navigator.language.toLowerCase() : '';
-  return browser.startsWith('es') ? 'es' : 'en';
+  return 'en';
 }
 
 function getByPath(obj, path) {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FiExternalLink, FiCalendar, FiBook, FiAward, FiMapPin } from 'react-icons/fi';
+import { ExternalLink, Calendar, Book, Award, MapPin } from 'lucide-react';
 import { useI18n } from '../i18n/index.jsx';
 
 export default function Education() {
@@ -219,18 +219,18 @@ export default function Education() {
                   </h3>
                   
                   <div className="flex items-center gap-2 text-gray-700 dark:text-gray-300 mb-4">
-                    <FiBook className="w-4 h-4" />
+                      <Book className="w-4 h-4" />
                     <span className="font-medium">{item.institution}</span>
                   </div>
 
                   {/* Location and Period */}
                   <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400 mb-4">
                     <div className="flex items-center gap-1">
-                      <FiMapPin className="w-3 h-3" />
+                      <MapPin className="w-3 h-3" />
                       {item.location}
                     </div>
                     <div className="flex items-center gap-1">
-                      <FiCalendar className="w-3 h-3" />
+                      <Calendar className="w-3 h-3" />
                       {item.period}
                     </div>
                   </div>
@@ -262,7 +262,7 @@ export default function Education() {
                       whileTap={{ scale: 0.95 }}
                       className="inline-flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark transition-all duration-300 font-medium"
                     >
-                      <FiExternalLink className="w-4 h-4" />
+                      <ExternalLink className="w-4 h-4" />
                       {t('education.viewCredential')}
                     </motion.a>
                   )}
@@ -281,7 +281,7 @@ export default function Education() {
           className="text-center mt-16 pt-10 border-t border-gray-200 dark:border-gray-800"
         >
           <div className="inline-flex items-center gap-3 px-6 py-3 bg-gray-100 dark:bg-gray-800 rounded-full mb-6">
-            <FiAward className="w-5 h-5 text-primary" />
+            <Award className="w-5 h-5 text-primary" />
             <span className="text-gray-700 dark:text-gray-300 font-medium">
               {t('education.programsCount', items.length)}
             </span>

@@ -1,7 +1,18 @@
 import { useEffect, useMemo, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ThemeToggle from './ThemeToggle';
-import { FiMenu, FiX, FiHome, FiUser, FiBriefcase, FiBook, FiMail, FiCode, FiChevronDown, FiGlobe } from 'react-icons/fi';
+import {
+  Menu,
+  X,
+  Home,
+  User,
+  Briefcase,
+  Book,
+  Mail,
+  Code,
+  ChevronDown,
+  Globe
+} from 'lucide-react';
 import { useI18n } from '../i18n/index.jsx';
 
 export default function Navbar() {
@@ -18,32 +29,32 @@ export default function Navbar() {
       {
         href: '#hero',
         label: t('nav.home'),
-        icon: <FiHome className="w-4 h-4" />
-      },
-      {
-        href: '#about',
-        label: t('nav.about'),
-        icon: <FiUser className="w-4 h-4" />
-      },
-      {
-        href: '#projects',
-        label: t('nav.projects'),
-        icon: <FiCode className="w-4 h-4" />
-      },
-      {
-        href: '#work-experience',
-        label: t('nav.experience'),
-        icon: <FiBriefcase className="w-4 h-4" />
+        icon: <Home className="w-4 h-4" />
       },
       {
         href: '#education',
         label: t('nav.education'),
-        icon: <FiBook className="w-4 h-4" />
+        icon: <Book className="w-4 h-4" />
+      },
+      {
+        href: '#work-experience',
+        label: t('nav.experience'),
+        icon: <Briefcase className="w-4 h-4" />
+      },
+      {
+        href: '#projects',
+        label: t('nav.projects'),
+        icon: <Code className="w-4 h-4" />
+      },
+      {
+        href: '#about',
+        label: t('nav.about'),
+        icon: <User className="w-4 h-4" />
       },
       {
         href: '#contact',
         label: t('nav.contact'),
-        icon: <FiMail className="w-4 h-4" />
+        icon: <Mail className="w-4 h-4" />
       }
     ],
     [t]
@@ -248,7 +259,7 @@ export default function Navbar() {
               aria-label={t('langSwitchAria')}
               className="px-2 py-2 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors flex items-center gap-1.5"
             >
-              <FiGlobe className="w-4 h-4" />
+              <Globe className="w-4 h-4" />
               <span className="text-xs font-semibold">
                 {language === 'en' ? 'ES' : 'EN'}
               </span>
@@ -266,7 +277,7 @@ export default function Navbar() {
               className="ml-2 px-3.5 py-2 bg-gradient-to-r from-primary to-purple-600 text-white rounded-full font-semibold text-sm hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 flex items-center gap-2"
             >
               {t('navbar.hireMe')}
-              <FiChevronDown className="w-4 h-4 rotate-270" />
+              <ChevronDown className="w-4 h-4 rotate-270" />
             </motion.a>
           </div>
 
@@ -281,7 +292,7 @@ export default function Navbar() {
               aria-label={t('langSwitchAria')}
               className="p-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors flex items-center gap-2"
             >
-              <FiGlobe className="w-5 h-5" />
+              <Globe className="w-5 h-5" />
               <span className="text-xs font-semibold">
                 {language === 'en' ? 'ES' : 'EN'}
               </span>
@@ -294,9 +305,9 @@ export default function Navbar() {
               aria-label="Toggle menu"
             >
               {isOpen ? (
-                <FiX className="w-6 h-6" />
+                <X className="w-6 h-6" />
               ) : (
-                <FiMenu className="w-6 h-6" />
+                <Menu className="w-6 h-6" />
               )}
             </motion.button>
           </div>

@@ -1,19 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { Moon, Sun } from './icons';
+import { Sun, Moon } from 'lucide-react';
+import { useTheme } from '../context/ThemeContext.jsx';
 
 export default function ThemeToggle() {
-  const [theme, setTheme] = useState(() =>
-    typeof window !== 'undefined' && document.documentElement.classList.contains('dark') ? 'dark' : 'light'
-  );
-
-  useEffect(() => {
-    document.documentElement.classList.toggle('dark', theme === 'dark');
-  }, [theme]);
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <button
       aria-label="Toggle dark mode"
-      onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+      onClick={toggleTheme}
       className="p-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800"
     >
       {theme === 'dark' ? <Sun /> : <Moon />}

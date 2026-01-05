@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FiUser, FiCode, FiUsers, FiTarget, FiBarChart2, FiBookOpen } from 'react-icons/fi';
+import { User, Code, Users, Target, BarChart2, BookOpen } from 'lucide-react';
 import { useI18n } from '../i18n/index.jsx';
 
 export default function About() {
@@ -11,7 +11,7 @@ export default function About() {
 
   const values = [
     {
-      icon: <FiCode className="w-6 h-6" />,
+      icon: <Code className="w-6 h-6" />,
       title: valuesT?.[0]?.title ?? 'Clean Architecture',
       description:
         valuesT?.[0]?.description ??
@@ -19,7 +19,7 @@ export default function About() {
       color: "from-blue-500 to-cyan-500"
     },
     {
-      icon: <FiTarget className="w-6 h-6" />,
+      icon: <Target className="w-6 h-6" />,
       title: valuesT?.[1]?.title ?? 'Pragmatic Solutions',
       description:
         valuesT?.[1]?.description ??
@@ -27,7 +27,7 @@ export default function About() {
       color: "from-green-500 to-emerald-500"
     },
     {
-      icon: <FiUsers className="w-6 h-6" />,
+      icon: <Users className="w-6 h-6" />,
       title: valuesT?.[2]?.title ?? 'Team Collaboration',
       description:
         valuesT?.[2]?.description ??
@@ -35,7 +35,7 @@ export default function About() {
       color: "from-purple-500 to-pink-500"
     },
     {
-      icon: <FiBarChart2 className="w-6 h-6" />,
+      icon: <BarChart2 className="w-6 h-6" />,
       title: valuesT?.[3]?.title ?? 'Observability',
       description:
         valuesT?.[3]?.description ??
@@ -122,7 +122,7 @@ export default function About() {
           className="text-center mb-16"
         >
           <div className="inline-flex items-center gap-3 px-6 py-3 bg-gray-100 dark:bg-gray-800 rounded-full mb-6">
-            <FiUser className="w-5 h-5 text-primary" />
+            <User className="w-5 h-5 text-primary" />
             <span className="text-gray-700 dark:text-gray-300 font-medium">
               {t('about.badge')}
             </span>
@@ -156,7 +156,7 @@ export default function About() {
             <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-8 shadow-lg">
               <div className="flex items-center gap-3 mb-6">
                 <div className="p-3 rounded-xl bg-gradient-to-br from-primary to-purple-600">
-                  <FiBookOpen className="w-6 h-6 text-white" />
+                  <BookOpen className="w-6 h-6 text-white" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
                   {t('about.philosophyTitle')}
@@ -329,7 +329,7 @@ export default function About() {
           <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-8 shadow-lg">
             <div className="text-center">
               <div className="inline-flex items-center gap-3 px-6 py-3 bg-gray-100 dark:bg-gray-700 rounded-full mb-6">
-                <FiTarget className="w-5 h-5 text-primary" />
+                        <Target className="w-5 h-5 text-primary" />
                 <span className="text-gray-700 dark:text-gray-300 font-medium">
                   {t('about.approachBadge')}
                 </span>
