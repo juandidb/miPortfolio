@@ -9,6 +9,9 @@ export default function Hero() {
   const { t, language } = useI18n();
   const { theme } = useTheme();
   const [videoActive, setVideoActive] = useState(false);
+  const handleVideoEnded = () => {
+    setVideoActive(false);
+  };
 
   const roles = t('hero.roles');
   const roleSequence = Array.isArray(roles)
@@ -36,10 +39,10 @@ export default function Hero() {
             src="assets/Portfolio_Hero_Video_Generation.mp4"
             autoPlay
             muted
-            loop
             playsInline
             preload="auto"
             aria-hidden="true"
+            onEnded={handleVideoEnded}
           />
           <div className="absolute top-0 left-0 w-full h-full bg-slate-900/30 dark:bg-slate-950/40" />
         </div>

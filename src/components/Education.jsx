@@ -1,10 +1,50 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { ExternalLink, Calendar, Book, Award, MapPin } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ExternalLink, Calendar, Book, Award, MapPin, X } from 'lucide-react';
 import { useI18n } from '../i18n/index.jsx';
 
 export default function Education() {
   const { language, t } = useI18n();
+  const [activeCredential, setActiveCredential] = React.useState(null);
+  const [showAdditionalCertificates, setShowAdditionalCertificates] = React.useState(false);
+
+  React.useEffect(() => {
+    if (typeof window === 'undefined' || typeof document === 'undefined') {
+      return undefined;
+    }
+
+    if (!activeCredential) {
+      document.body.style.overflow = '';
+      return undefined;
+    }
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        setActiveCredential(null);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = '';
+    };
+  }, [activeCredential]);
+
+  const openCredential = (item) => {
+    if (!item?.credential?.asset) {
+      return;
+    }
+    setActiveCredential({
+      ...item.credential,
+      title: item.title,
+      institution: item.institution
+    });
+  };
+
+  const closeCredential = () => setActiveCredential(null);
 
   const items = [
     { 
@@ -37,7 +77,11 @@ export default function Education() {
         en: 'Eight-month IT support program, developed by Google, that covers troubleshooting, customer service, networking, operating systems, system administration, and security, and includes hands-on labs.',
         es: 'Programa de soporte IT de ocho meses desarrollado por Google. Cubre troubleshooting, atención al cliente, redes, sistemas operativos, administración de sistemas y seguridad, con laboratorios prácticos.'
       },
-      credential: 'https://coursera.org/share/97732f9da1ee1d5306cf1da8b332174f',
+      credential: {
+        asset: '/googleITcertificate.jpeg',
+        type: 'image',
+        alt: 'Google IT Support Professional Certificate'
+      },
       status: 'completed',
       tags: ['IT Support', 'Networking', 'System Administration', 'Security']
     },
@@ -53,7 +97,11 @@ export default function Education() {
         en: 'Capstone project from Google\'s Advanced Data Analytics program, focused on applying statistical analysis, data modeling, and insight generation using real-world datasets.',
         es: 'Proyecto final del programa Advanced Data Analytics de Google, enfocado en aplicar análisis estadístico, modelado de datos y generación de insights sobre datasets reales.'
       },
-      credential: 'https://coursera.org/share/97732f9da1ee1d5306cf1da8b332174f',
+      credential: {
+        asset: '/googledataanalysis.jpeg',
+        type: 'image',
+        alt: 'Google Advanced Data Analytics Capstone Certificate'
+      },
       status: 'completed',
       tags: ['Data Analytics', 'Statistical Analysis', 'Data Modeling', 'Machine Learning']
     },
@@ -69,7 +117,11 @@ export default function Education() {
         en: 'Four-month program at the educational and research institute with HQ at Lisbon, Portugal, focused on business & professional hybrid (on-campus and online) education at areas: Business & Administration, Science & Technology, Banking & Finance.',
         es: 'Programa intensivo de cuatro meses en un instituto educativo y de investigación con sede en Lisboa, Portugal, orientado a formación híbrida (presencial y online) en áreas de Negocios y Administración, Ciencia y Tecnología, Banca y Finanzas.'
       },
-      credential: 'https://edu.gtf.pt/pluginfile.php/1/tool_certificate/issues/1765740135/3262015396JD.pdf',
+      credential: {
+        asset: '/1765741380183.pdf',
+        type: 'pdf',
+        alt: 'Data Analysis Program Certificate'
+      },
       status: 'completed',
       tags: ['Business Analytics', 'Financial Analysis', 'Data Science', 'Business Intelligence']
     },
@@ -82,7 +134,11 @@ export default function Education() {
         en: 'Backend development program focused on Node.js, covering REST APIs, databases, authentication, server-side architecture, and security, with hands-on projects and real-world use cases.',
         es: 'Programa de desarrollo backend con foco en Node.js. Cubre APIs REST, bases de datos, autenticación, arquitectura server-side y seguridad, con proyectos prácticos y casos reales.'
       },
-      credential: 'https://aulasvirtuales.bue.edu.ar/mod/customcert/view.php?id=701082&downloadown=1',
+      credential: {
+        asset: '/Node_-_Certificacin.pdf',
+        type: 'pdf',
+        alt: 'Back-End Development with Node.js Certificate'
+      },
       status: 'completed',
       tags: ['Node.js', 'REST APIs', 'Database Design', 'Authentication']
     },
@@ -95,7 +151,11 @@ export default function Education() {
         en: 'Java programming course from the ground up, covering object-oriented concepts, data structures, and building real-world applications.',
         es: 'Curso de programación en Java desde cero, cubriendo conceptos orientados a objetos, estructuras de datos y desarrollo de aplicaciones reales.'
       },
-      credential: 'https://www.coderhouse.com/ar/certificados/65e08bc04634637e3?lang',
+      credential: {
+        asset: '/javaprogramming.jpeg',
+        type: 'image',
+        alt: 'Programming with Java Certificate'
+      },
       status: 'completed',
       tags: ['Java', 'OOP', 'Software Development', 'Spring Framework']
     },
@@ -108,11 +168,56 @@ export default function Education() {
         en: 'UX/UI Design course to design intuitive and engaging digital experiences, covering user research, wireframing, prototyping, and visual design principles',
         es: 'Curso de UX/UI para diseñar experiencias digitales intuitivas y atractivas, cubriendo investigación de usuarios, wireframes, prototipado y principios de diseño visual.'
       },
-      credential: 'https://www.coderhouse.com/ar/certificados/6448bc5235237e3?lang',
+      credential: {
+        asset: '/uxuidesign.jpeg',
+        type: 'image',
+        alt: 'UX/UI Design Certificate'
+      },
       status: 'completed',
       tags: ['UX Design', 'UI Design', 'User Experience', 'Product Design']
     }
   ];
+
+  const additionalCertificates = [
+    {
+      title: {
+        en: 'IIA Certification',
+        es: 'Certificación IIA'
+      },
+      institution: 'Ministerio de Educación de Buenos Aires',
+      credential: {
+        asset: '/IIA-_Certificacin.pdf',
+        type: 'pdf',
+        alt: 'IIA Certification'
+      }
+    },
+    {
+      title: {
+        en: 'Professional Certificate 1765140628372',
+        es: 'Certificado profesional 1765140628372'
+      },
+      institution: 'Cambridge International School of English',
+      credential: {
+        asset: '/1765140628372.pdf',
+        type: 'pdf',
+        alt: 'Professional Certificate 1765140628372'
+      }
+    },
+    {
+      title: {
+        en: 'Professional Certificate 1765141826193',
+        es: 'Certificado profesional 1765141826193'
+      },
+      institution: 'Cambridge International School of English',
+      credential: {
+        asset: '/1765141826193.pdf',
+        type: 'pdf',
+        alt: 'Professional Certificate 1765141826193'
+      }
+    }
+  ];
+
+  const totalPrograms = items.length + additionalCertificates.length;
 
   const localizedItems = items.map((item) => ({
     ...item,
@@ -120,6 +225,12 @@ export default function Education() {
     desc: typeof item.desc === 'object' ? (item.desc?.[language] ?? item.desc?.en ?? '') : item.desc,
     location: typeof item.location === 'object' ? (item.location?.[language] ?? item.location?.en ?? '') : item.location,
     period: typeof item.period === 'object' ? (item.period?.[language] ?? item.period?.en ?? '') : item.period
+  }));
+
+  const localizedAdditionalCertificates = additionalCertificates.map((item) => ({
+    ...item,
+    title: typeof item.title === 'object' ? (item.title?.[language] ?? item.title?.en ?? '') : item.title,
+    institution: typeof item.institution === 'object' ? (item.institution?.[language] ?? item.institution?.en ?? '') : item.institution
   }));
 
   const containerVariants = {
@@ -253,24 +364,112 @@ export default function Education() {
                   </div>
 
                   {/* Credential Button */}
-                  {item.credential && (
-                    <motion.a
-                      href={item.credential}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                  {item.credential?.asset && (
+                    <motion.button
+                      type="button"
+                      onClick={() => openCredential(item)}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       className="inline-flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark transition-all duration-300 font-medium"
+                      aria-label={`Show credential for ${item.title}`}
                     >
                       <ExternalLink className="w-4 h-4" />
                       {t('education.viewCredential')}
-                    </motion.a>
+                    </motion.button>
                   )}
                 </div>
               </motion.div>
             ))}
           </motion.div>
         </div>
+
+          {additionalCertificates.length > 0 && (
+            <>
+              <div className="mt-12 flex justify-center">
+                <button
+                  type="button"
+                  onClick={() => setShowAdditionalCertificates((prev) => !prev)}
+                  className="inline-flex items-center gap-2 rounded-full border border-primary/30 px-6 py-3 text-primary font-semibold transition-all duration-300 hover:bg-primary hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/60"
+                  aria-expanded={showAdditionalCertificates}
+                >
+                  {showAdditionalCertificates ? t('education.viewLess') : t('education.viewMore')}
+                </button>
+              </div>
+
+              <AnimatePresence initial={false}>
+                {showAdditionalCertificates && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.4 }}
+                    className="max-w-5xl mx-auto mt-10 overflow-hidden"
+                  >
+                    <div className="text-center mb-8">
+                      <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
+                        {t('education.additionalTitle')}
+                      </h3>
+                      <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mt-2">
+                        {t('education.additionalSubtitle')}
+                      </p>
+                    </div>
+
+                    <div className="grid gap-6 md:grid-cols-2">
+                      {localizedAdditionalCertificates.map((cert, index) => (
+                        <motion.div
+                          key={cert.credential.asset}
+                          initial={{ opacity: 0, y: 30 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 30 }}
+                          transition={{ duration: 0.4, delay: index * 0.1 }}
+                          className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-5 shadow-lg"
+                        >
+                          <div>
+                            <p className="text-xs uppercase tracking-wide text-primary/80">
+                              {cert.institution}
+                            </p>
+                            <h4 className="text-lg font-semibold text-gray-900 dark:text-white mt-1">
+                              {cert.title}
+                            </h4>
+                          </div>
+
+                          <div className="mt-4 h-64 rounded-xl border border-dashed border-gray-200 dark:border-gray-600 overflow-hidden bg-gray-50 dark:bg-gray-900">
+                            {cert.credential.type === 'pdf' ? (
+                              <iframe
+                                src={cert.credential.asset}
+                                title={`${cert.title} preview`}
+                                className="w-full h-full"
+                                loading="lazy"
+                              />
+                            ) : (
+                              <img
+                                src={cert.credential.asset}
+                                alt={cert.credential.alt ?? cert.title}
+                                className="w-full h-full object-contain bg-white dark:bg-gray-900"
+                                loading="lazy"
+                              />
+                            )}
+                          </div>
+
+                          <motion.button
+                            type="button"
+                            onClick={() => openCredential(cert)}
+                            whileHover={{ scale: 1.02 }}
+                            whileTap={{ scale: 0.98 }}
+                            className="mt-4 inline-flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg font-medium hover:bg-primary-dark transition-all duration-300"
+                            aria-label={`Show credential for ${cert.title}`}
+                          >
+                            <ExternalLink className="w-4 h-4" />
+                            {t('education.viewCredential')}
+                          </motion.button>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </>
+          )}
 
         {/* CTA Section */}
         <motion.div
@@ -280,10 +479,10 @@ export default function Education() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-center mt-16 pt-10 border-t border-gray-200 dark:border-gray-800"
         >
-          <div className="inline-flex items-center gap-3 px-6 py-3 bg-gray-100 dark:bg-gray-800 rounded-full mb-6">
+            <div className="inline-flex items-center gap-3 px-6 py-3 bg-gray-100 dark:bg-gray-800 rounded-full mb-6">
             <Award className="w-5 h-5 text-primary" />
             <span className="text-gray-700 dark:text-gray-300 font-medium">
-              {t('education.programsCount', items.length)}
+              {t('education.programsCount', '+10')}
             </span>
           </div>
           
@@ -310,6 +509,63 @@ export default function Education() {
           </div>
         </motion.div>
       </div>
+
+      <AnimatePresence>
+        {activeCredential && (
+          <motion.div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm px-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={closeCredential}
+          >
+            <motion.div
+              className="relative w-full max-w-4xl bg-white dark:bg-gray-900 rounded-2xl shadow-2xl p-6"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ type: 'spring', stiffness: 260, damping: 25 }}
+              onClick={(event) => event.stopPropagation()}
+            >
+              <button
+                type="button"
+                onClick={closeCredential}
+                className="absolute top-4 right-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
+                aria-label="Close credential viewer"
+              >
+                <X className="w-5 h-5" />
+              </button>
+
+              <div className="pr-10">
+                <p className="text-sm font-semibold uppercase tracking-wide text-primary">
+                  {activeCredential.institution}
+                </p>
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
+                  {activeCredential.title}
+                </h3>
+              </div>
+
+              <div className="mt-6 h-[70vh] w-full overflow-hidden rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800">
+                {activeCredential.type === 'pdf' ? (
+                  <iframe
+                    src={activeCredential.asset}
+                    title={`${activeCredential.title} credential`}
+                    className="h-full w-full"
+                    loading="lazy"
+                  />
+                ) : (
+                  <img
+                    src={activeCredential.asset}
+                    alt={activeCredential.alt ?? activeCredential.title}
+                    className="h-full w-full object-contain bg-white dark:bg-gray-900"
+                    loading="lazy"
+                  />
+                )}
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

@@ -184,6 +184,10 @@ const translations = {
       subtitle:
         'A journey of continuous learning and professional growth through accredited programs and hands-on projects.',
       viewCredential: 'View Credential',
+      viewMore: 'View More',
+      viewLess: 'View Less',
+      additionalTitle: 'Additional Certifications',
+      additionalSubtitle: 'Other credentials and recognitions earned through intensive programs and professional workshops.',
       programsCount: (n) => `${n} Programs & Certifications`,
       ctaTitle: 'Always Learning, Always Growing',
       ctaText:
@@ -450,6 +454,10 @@ const translations = {
       subtitle:
         'Un camino de aprendizaje continuo y crecimiento profesional a través de programas acreditados y proyectos prácticos.',
       viewCredential: 'Ver Certificado',
+      viewMore: 'Ver más',
+      viewLess: 'Ver menos',
+      additionalTitle: 'Certificaciones adicionales',
+      additionalSubtitle: 'Otras credenciales y reconocimientos obtenidos en programas intensivos y talleres profesionales.',
       programsCount: (n) => `${n} Programas y Certificaciones`,
       ctaTitle: 'Siempre aprendiendo, siempre creciendo',
       ctaText:
