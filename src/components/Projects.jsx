@@ -4,6 +4,7 @@ import { projects } from '../data/projects';
 import { motion } from 'framer-motion';
 import { Github } from 'lucide-react';
 import { useI18n } from '../i18n/index.jsx';
+import { Link } from 'react-router-dom';
 
 export default function Projects() {
   const { language, t } = useI18n();
@@ -66,6 +67,49 @@ export default function Projects() {
         </motion.div>
 
         {/* Grid de proyectos */}
+        {/* Caso destacado (Featured) */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.7, delay: 0.15 }}
+          className="mb-12"
+        >
+          <div className="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg dark:shadow-none group transform transition-all duration-500 hover:scale-[1.02]">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
+              <div className="md:col-span-1 relative">
+                <img
+                  src="/assets/9delivery.png"
+                  alt="Caso destacado - interfaz tablet con paleta oscura"
+                  className="w-full h-56 md:h-full object-cover"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/35 to-transparent dark:from-black/40 pointer-events-none" />
+              </div>
+              <div className="p-6 md:col-span-2 flex flex-col justify-center">
+                <div className="flex items-center gap-3 mb-2">
+                  <span className="inline-block text-sm font-semibold text-primary">{t('projects.featured.badge')}</span>
+                </div>
+                <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-3">
+                  {t('projects.featured.title')}
+                </h3>
+                <p className="text-gray-600 dark:text-gray-300 mb-4">
+                  {t('projects.featured.short')}
+                </p>
+                <div className="mb-4">
+                  <div className="flex flex-wrap gap-2">
+                    {((t('projects.featured.chips') || [])).map((d, i) => (
+                      <span key={i} className="text-sm px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-700 text-gray-700 dark:text-gray-200">{d}</span>
+                    ))}
+                  </div>
+                </div>
+                <div className="flex items-center gap-3">
+                  <a href="/case/deli-app" className="inline-flex items-center px-5 py-2 rounded-md bg-primary text-white font-medium hover:opacity-95 transition">{t('projects.featured.cta')}</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -82,6 +126,8 @@ export default function Projects() {
             </motion.div>
           ))}
         </motion.div>
+
+
 
         {/* CTA adicional */}
         <motion.div

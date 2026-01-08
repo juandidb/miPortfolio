@@ -147,6 +147,34 @@ const translations = {
       titleB: 'Projects',
       subtitle:
         'A selection of recent work showcasing my approach to problem-solving, clean architecture, and user-centric design.',
+      featured: {
+        badge: 'Featured case',
+        title: 'deli.app · Open-source local delivery platform',
+        short: 'End-to-end platform I built and shipped as full‑stack developer — designed for small-city merchants and users, focused on flexibility and low operational cost.',
+        chips: [
+          'Diseño',
+          'Branding',
+          'UX/UI',
+          'FrontEnd',
+          'BackEnd',
+          'Architecture & stack'
+        ],
+        body: [
+          'Deli.app was born from a concrete need: in many smaller cities there are no major delivery apps or existing solutions do not reflect local realities.',
+          'The objective was to design and develop a full, scalable and accessible solution built from scratch for merchants and users in small towns.',
+          'Development covered visual identity, logo design, user experience, and full technical implementation: frontend, backend, and database.',
+          'Deli.app was conceived as an open-source platform to prioritize flexibility, low operational costs and easy adaptation to different business models.',
+          'With a practical, results-driven approach we delivered a clear interface, optimized flows and administrative tools that reduce friction — making it easy for merchants to operate and for users to order quickly.'
+        ],
+        deliverables: [
+          'Visual identity & logo',
+          'UX flows & high-fidelity prototypes',
+          'Frontend implementation (React + Tailwind)',
+          'Backend & API design',
+          'Database schema & operational considerations'
+        ],
+        cta: 'View case study'
+      },
       ctaText: 'Interested in seeing more? Check out my complete portfolio on GitHub.',
       ctaButton: 'View Full Portfolio',
       card: {
@@ -417,6 +445,34 @@ const translations = {
       titleB: 'Destacados',
       subtitle:
         'Una selección de trabajos recientes que muestran mi enfoque para resolver problemas, arquitectura limpia y diseño centrado en el usuario.',
+      featured: {
+        badge: 'Caso destacado',
+        title: 'deli.app · Plataforma open source para delivery local',
+        short: 'Plataforma de extremo a extremo que estoy desarrollando como proyecto Full‑Stack — actualmente en desarrollo y en fase de pruebas piloto, pensada para comercios y usuarios de ciudades chicas, con foco en flexibilidad y costos bajos.',
+        chips: [
+          'Diseño',
+          'Branding',
+          'UX/UI',
+          'FrontEnd',
+          'BackEnd',
+          'Architecture & stack'
+        ],
+        body: [
+          'Deli.app nace de una necesidad concreta: en muchas ciudades pequeñas del interior del país, las grandes apps no existen o no responden a la realidad local.',
+          'El objetivo fue diseñar y desarrollar una solución integral, escalable y accesible, creada desde cero para comercios y usuarios de localidades chicas.',
+          'El trabajo ha incluido identidad visual, diseño de logo, experiencia de usuario y avances en la implementación técnica de frontend, backend y base de datos.',
+          'Deli.app se concibió como plataforma open source para priorizar flexibilidad, bajo costo operativo y fácil adaptación a distintos modelos de negocio.',
+          'Con un enfoque práctico y centrado en resultados, buscamos entregar una interfaz clara, flujos optimizados y herramientas administrativas que reduzcan fricción — actualmente en proceso de validación mediante pruebas piloto.'
+        ],
+        deliverables: [
+          'Identidad visual y logo',
+          'Flujos UX y prototipos de alta fidelidad',
+          'Implementación frontend (React + Tailwind)',
+          'Backend y diseño de API',
+          'Esquema de base de datos y consideraciones operativas'
+        ],
+        cta: 'Ver caso'
+      },
       ctaText: '¿Querés ver más? Mirá mi portfolio completo en GitHub.',
       ctaButton: 'Ver Portfolio Completo',
       card: {

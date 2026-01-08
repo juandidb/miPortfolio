@@ -10,7 +10,10 @@ import Contact from './components/Contact'
 import Footer from './components/Footer'
 import ThemeToggle from './components/ThemeToggle'
 
-function App() {
+import { Routes, Route } from 'react-router-dom';
+import CaseDeli from './pages/CaseDeli';
+
+function Home() {
   return (
     <div className="min-h-screen bg-white text-slate-900 dark:bg-slate-900 dark:text-slate-100 transition-colors">
       <Navbar />
@@ -31,6 +34,15 @@ function App() {
 
       <Footer />
     </div>
+  )
+}
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/case/deli-app" element={<CaseDeli />} />
+    </Routes>
   )
 }
 

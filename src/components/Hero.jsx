@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { PlayCircle, PauseCircle } from 'lucide-react';
 import { motion } from 'framer-motion'
 import { TypeAnimation } from 'react-type-animation'
@@ -8,10 +8,8 @@ import { useTheme } from '../context/ThemeContext.jsx'
 export default function Hero() {
   const { t, language } = useI18n();
   const { theme } = useTheme();
-  const [videoActive, setVideoActive] = useState(false);
-  const handleVideoEnded = () => {
-    setVideoActive(false);
-  };
+  const [isPlaying, setIsPlaying] = useState(false);
+  const videoRef = useRef(null);
 
   const roles = t('hero.roles');
   const roleSequence = Array.isArray(roles)
@@ -19,12 +17,30 @@ export default function Hero() {
     : [];
 
   useEffect(() => {
-    if (theme !== 'dark') {
-      setVideoActive(false);
+    const el = videoRef.current;
+    const handlePlay = () => setIsPlaying(true);
+    const handlePause = () => setIsPlaying(false);
+
+    if (el) {
+      el.addEventListener('play', handlePlay);
+      el.addEventListener('pause', handlePause);
+      // when theme switches to dark, try to play; otherwise pause
+      if (theme === 'dark') {
+        el.play().catch(() => {});
+      } else {
+        el.pause();
+      }
     }
+
+    return () => {
+      if (el) {
+        el.removeEventListener('play', handlePlay);
+        el.removeEventListener('pause', handlePause);
+      }
+    };
   }, [theme]);
 
-  const showVideo = theme === 'dark' && videoActive;
+  const showVideo = theme === 'dark';
 
   return (
     <section
@@ -32,18 +48,19 @@ export default function Hero() {
       className="relative w-full overflow-hidden flex items-center justify-center min-h-[80vh] lg:min-h-screen py-16 md:py-20"
     >
       {/* Video de fondo */}
-      {showVideo && (
+          {showVideo && (
         <div className="absolute top-0 left-0 w-full h-full z-0 overflow-hidden pointer-events-none">
           <video
-            className="absolute top-0 left-0 w-full h-full object-cover brightness-110 contrast-110"
-            src="assets/Portfolio_Hero_Video_Generation.mp4"
-            autoPlay
-            muted
-            playsInline
-            preload="auto"
-            aria-hidden="true"
-            onEnded={handleVideoEnded}
-          />
+                ref={videoRef}
+                className="absolute top-0 left-0 w-full h-full object-cover brightness-110 contrast-110"
+                src="assets/Portfolio_Hero_Video_Generation.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="auto"
+                aria-hidden="true"
+              />
           <div className="absolute top-0 left-0 w-full h-full bg-slate-900/30 dark:bg-slate-950/40" />
         </div>
       )}
@@ -60,9 +77,11 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-gray-900 dark:text-white hover:text-primary dark:hover:text-primary transition-colors duration-300 cursor-pointer mb-6"
+            className={`group text-5xl md:text-6xl lg:text-7xl font-extrabold ${theme === 'dark' && isPlaying ? 'text-white' : 'text-gray-900 dark:text-white'} transition-colors duration-500 ease-in-out cursor-pointer mb-6`}
           >
-            Juan <span className="text-primary">Di Benedetto</span>
+            <span className={`${theme === 'dark' && isPlaying ? 'text-white' : 'text-gray-900 dark:text-white'} dark:group-hover:text-[#079b98] transition-colors duration-500 ease-in-out`}>Juan</span>
+            {' '}
+            <span className={`${theme === 'dark' && isPlaying ? 'text-white' : (theme === 'dark' ? 'text-blue-500 dark:text-blue-400' : 'text-primary')} dark:group-hover:text-[#079b98] transition-colors duration-500 ease-in-out`}>Di Benedetto</span>
           </motion.h1>
           
           {/* Texto animado de profesiones */}
@@ -81,7 +100,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="max-w-2xl mx-auto text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-10"
+            className="max-w-2xl mx-auto text-lg md:text-xl text-gray-600 dark:text-white mb-10"
           >
             {t('hero.intro')}
           </motion.p>
@@ -114,12 +133,23 @@ export default function Hero() {
               animate={{ opacity: 0.85, x: 30 }}
               whileHover={{ opacity: 1, scale: 1.1 }}
               transition={{ duration: 0.5, delay: 0.7 }}
-              onClick={() => setVideoActive((v) => !v)}
-              aria-label={videoActive ? 'Desactivar animación' : 'Activar animación'}
-              className="absolute top-1/2 right-[22%] z-20 p-1.5 rounded-full bg-slate-900/40 text-white border border-white/10 hover:bg-slate-900/60 focus:outline-none transition-all duration-200 flex items-center justify-center"
-              style={{ transform: 'translateY(calc(-50% - 15px))' }}
+              onClick={() => {
+                const vid = videoRef.current;
+                if (!vid) return;
+                if (isPlaying) {
+                  vid.pause();
+                } else {
+                  vid.play().catch(() => {});
+                }
+              }}
+              aria-label={isPlaying ? 'Pausa video' : 'Reproducir video'}
+              className={
+                "absolute z-20 p-1.5 rounded-full bg-slate-900/40 text-white border border-white/10 " +
+                "hover:bg-slate-900/60 focus:outline-none transition-all duration-200 flex items-center justify-center " +
+                "left-1/2 -translate-x-1/2 bottom-6 md:left-auto md:right-[22%] md:bottom-auto md:top-1/2 md:translate-x-0 md:-translate-y-1/2"
+              }
             >
-              {videoActive ? <PauseCircle className="w-5 h-5" /> : <PlayCircle className="w-5 h-5" />}
+              {isPlaying ? <PauseCircle className="w-5 h-5" /> : <PlayCircle className="w-5 h-5" />}
             </motion.button>
           )}
 
