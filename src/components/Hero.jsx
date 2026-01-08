@@ -1,5 +1,4 @@
-import { useEffect, useState, useRef } from 'react'
-import { PlayCircle, PauseCircle } from 'lucide-react';
+import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { TypeAnimation } from 'react-type-animation'
 import { useI18n } from '../i18n/index.jsx'
@@ -8,8 +7,8 @@ import { useTheme } from '../context/ThemeContext.jsx'
 export default function Hero() {
   const { t, language } = useI18n();
   const { theme } = useTheme();
-  const [isPlaying, setIsPlaying] = useState(false);
   const videoRef = useRef(null);
+ 
 
   const roles = t('hero.roles');
   const roleSequence = Array.isArray(roles)
@@ -18,22 +17,15 @@ export default function Hero() {
 
   useEffect(() => {
     const el = videoRef.current;
-    const handlePlay = () => setIsPlaying(true);
-    const handlePause = () => setIsPlaying(false);
+    if (!el) return;
 
-    if (el) {
-      el.addEventListener('play', handlePlay);
-      el.addEventListener('pause', handlePause);
-      // Try to play the video (autoplay may be blocked by the browser).
+    if (theme === 'dark') {
+      // Ensure video plays in dark mode (muted autoplay should be allowed).
       el.play().catch(() => {});
+    } else {
+      // Pause when leaving dark mode
+      try { el.pause(); } catch (e) {}
     }
-
-    return () => {
-      if (el) {
-        el.removeEventListener('play', handlePlay);
-        el.removeEventListener('pause', handlePause);
-      }
-    };
   }, [theme]);
 
   const showVideo = theme === 'dark';
@@ -73,11 +65,11 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className={`group text-5xl md:text-6xl lg:text-7xl font-extrabold ${theme === 'dark' && isPlaying ? 'text-white' : 'text-gray-900 dark:text-white'} transition-colors duration-500 ease-in-out cursor-pointer mb-6`}
+            className={`group text-5xl md:text-6xl lg:text-7xl font-extrabold ${theme === 'dark' ? 'text-white' : 'text-gray-900'} transition-colors duration-500 ease-in-out cursor-pointer mb-6`}
           >
-            <span className={`${theme === 'dark' && isPlaying ? 'text-white' : 'text-gray-900 dark:text-white'} dark:group-hover:text-[#079b98] transition-colors duration-500 ease-in-out`}>Juan</span>
+            <span className={`${theme === 'dark' ? 'text-white' : 'text-gray-900'} dark:group-hover:text-[#079b98] transition-colors duration-500 ease-in-out`}>Juan</span>
             {' '}
-            <span className={`${theme === 'dark' && isPlaying ? 'text-white' : (theme === 'dark' ? 'text-blue-500 dark:text-blue-400' : 'text-primary')} dark:group-hover:text-[#079b98] transition-colors duration-500 ease-in-out`}>Di Benedetto</span>
+            <span className={`${theme === 'dark' ? 'text-white' : 'text-primary'} dark:group-hover:text-[#079b98] transition-colors duration-500 ease-in-out`}>Di Benedetto</span>
           </motion.h1>
 
           {/* Texto animado de profesiones */}
@@ -122,31 +114,7 @@ export default function Hero() {
           </motion.div>
 
           {/* Botón minimalista para activar/desactivar animación (solo en dark, solo en Hero) */}
-          {theme === 'dark' && (
-            <motion.button
-              initial={{ opacity: 0, x: 70 }}
-              animate={{ opacity: 0.85, x: 30 }}
-              whileHover={{ opacity: 1, scale: 1.1 }}
-              transition={{ duration: 0.5, delay: 0.7 }}
-              onClick={() => {
-                const vid = videoRef.current;
-                if (!vid) return;
-                if (isPlaying) {
-                  vid.pause();
-                } else {
-                  vid.play().catch(() => {});
-                }
-              }}
-              aria-label={isPlaying ? 'Pausa video' : 'Reproducir video'}
-              className={
-                "absolute z-20 p-1.5 rounded-full bg-slate-900/40 text-white border border-white/10 " +
-                "hover:bg-slate-900/60 focus:outline-none transition-all duration-200 flex items-center justify-center " +
-                "top-[-124px] right-[54px] md:left-auto md:right-[22%] md:bottom-auto md:top-1/2 md:translate-x-0 md:-translate-y-1/2"
-              }
-            >
-              {isPlaying ? <PauseCircle className="w-4 h-4 md:w-5 md:h-5" /> : <PlayCircle className="w-4 h-4 md:w-5 md:h-5" />}
-            </motion.button>
-          )}
+          {/* Removed play/pause control: video auto-plays in dark mode */}
 
         </motion.div>
       </div>
