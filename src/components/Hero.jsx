@@ -1,4 +1,5 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useState, useRef } from 'react'
+// ...existing code...
 import { motion } from 'framer-motion'
 import { TypeAnimation } from 'react-type-animation'
 import { useI18n } from '../i18n/index.jsx'
@@ -8,7 +9,6 @@ export default function Hero() {
   const { t, language } = useI18n();
   const { theme } = useTheme();
   const videoRef = useRef(null);
- 
 
   const roles = t('hero.roles');
   const roleSequence = Array.isArray(roles)
@@ -17,14 +17,8 @@ export default function Hero() {
 
   useEffect(() => {
     const el = videoRef.current;
-    if (!el) return;
-
-    if (theme === 'dark') {
-      // Ensure video plays in dark mode (muted autoplay should be allowed).
+    if (theme === 'dark' && el) {
       el.play().catch(() => {});
-    } else {
-      // Pause when leaving dark mode
-      try { el.pause(); } catch (e) {}
     }
   }, [theme]);
 
@@ -41,7 +35,7 @@ export default function Hero() {
           <video
             ref={videoRef}
             className="absolute top-0 left-0 w-full h-full object-cover brightness-110 contrast-110"
-            src="assets/Portfolio_Hero_Video_Generation.mp4"
+            src="/assets/Portfolio_Hero_Video_Generation.mp4"
             autoPlay
             loop
             muted
@@ -65,11 +59,11 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className={`group text-5xl md:text-6xl lg:text-7xl font-extrabold ${theme === 'dark' ? 'text-white' : 'text-gray-900'} transition-colors duration-500 ease-in-out cursor-pointer mb-6`}
+            className={`group text-5xl md:text-6xl lg:text-7xl font-extrabold ${theme === 'dark' ? 'text-white' : 'text-gray-900 dark:text-white'} transition-colors duration-500 ease-in-out cursor-pointer mb-6`}
           >
-            <span className={`${theme === 'dark' ? 'text-white' : 'text-gray-900'} dark:group-hover:text-[#079b98] transition-colors duration-500 ease-in-out`}>Juan</span>
+            <span className={`${theme === 'dark' ? 'text-white' : 'text-gray-900 dark:text-white'} dark:group-hover:text-[#079b98] transition-colors duration-500 ease-in-out`}>Juan</span>
             {' '}
-            <span className={`${theme === 'dark' ? 'text-white' : 'text-primary'} dark:group-hover:text-[#079b98] transition-colors duration-500 ease-in-out`}>Di Benedetto</span>
+            <span className={`${theme === 'dark' ? 'text-white' : (theme === 'dark' ? 'text-blue-500 dark:text-blue-400' : 'text-primary')} dark:group-hover:text-[#079b98] transition-colors duration-500 ease-in-out`}>Di Benedetto</span>
           </motion.h1>
 
           {/* Texto animado de profesiones */}
@@ -113,8 +107,7 @@ export default function Hero() {
             </a>
           </motion.div>
 
-          {/* Botón minimalista para activar/desactivar animación (solo en dark, solo en Hero) */}
-          {/* Removed play/pause control: video auto-plays in dark mode */}
+          {/* ...eliminado botón de play/pausa... */}
 
         </motion.div>
       </div>

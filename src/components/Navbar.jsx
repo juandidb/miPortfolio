@@ -20,7 +20,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('#hero');
 
-  const logoUrl = `${import.meta.env.BASE_URL}logoJuan.png`;
+  const logoUrl = '/logoJuan.png';
 
   const { language, toggleLanguage, t } = useI18n();
 

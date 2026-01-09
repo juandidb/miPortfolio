@@ -7,7 +7,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
   const { t } = useI18n();
 
-  const logoUrl = `${import.meta.env.BASE_URL}logoJuan.png`;
+  const logoUrl = '/logoJuan.png';
 
   const scrollToTop = () => {
     window.scrollTo({
