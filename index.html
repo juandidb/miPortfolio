@@ -16,7 +16,11 @@
       (function() {
         try {
           var storedTheme = localStorage.getItem('portfolio.theme');
-          if (storedTheme === 'dark') {
+          // Ensure default load is light for first-time visitors
+          if (storedTheme === null) {
+            localStorage.setItem('portfolio.theme', 'light');
+            document.documentElement.classList.remove('dark');
+          } else if (storedTheme === 'dark') {
             document.documentElement.classList.add('dark');
           } else {
             document.documentElement.classList.remove('dark');

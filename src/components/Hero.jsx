@@ -11,6 +11,10 @@ export default function Hero() {
   const heroVidRef = useRef(null);
   const lottieContainerRef = useRef(null);
   const lottieAnimRef = useRef(null);
+  const lottieFlameContainerRef = useRef(null);
+  const lottieFlameAnimRef = useRef(null);
+  const lottieLightBgContainerRef = useRef(null);
+  const lottieLightBgAnimRef = useRef(null);
 
   const roles = t('hero.roles');
   const [roleIndex, setRoleIndex] = useState(0);
@@ -59,7 +63,7 @@ export default function Hero() {
   };
 
   useEffect(() => {
-    // load Lottie animation only for light theme
+    // load Lottie animation only for light theme (main hero lottie)
     if (theme !== 'dark' && lottieContainerRef.current) {
       const anim = lottie.loadAnimation({
         container: lottieContainerRef.current,
@@ -72,6 +76,42 @@ export default function Hero() {
       return () => {
         anim.destroy();
         lottieAnimRef.current = null;
+      };
+    }
+  }, [theme]);
+
+  useEffect(() => {
+    // load a background Lottie for light theme behind the main animation
+    if (theme !== 'dark' && lottieLightBgContainerRef.current) {
+      const bg = lottie.loadAnimation({
+        container: lottieLightBgContainerRef.current,
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        path: `${import.meta.env.BASE_URL}assets/animaciones/vivid-green-room-with-a-window.json`,
+      });
+      lottieLightBgAnimRef.current = bg;
+      return () => {
+        bg.destroy();
+        lottieLightBgAnimRef.current = null;
+      };
+    }
+  }, [theme]);
+
+  useEffect(() => {
+    // load a subtle starfield Lottie only for dark theme
+    if (theme === 'dark' && lottieFlameContainerRef.current) {
+      const flame = lottie.loadAnimation({
+        container: lottieFlameContainerRef.current,
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        path: `${import.meta.env.BASE_URL}assets/animaciones/flame-480.json`,
+      });
+      lottieFlameAnimRef.current = flame;
+      return () => {
+        flame.destroy();
+        lottieFlameAnimRef.current = null;
       };
     }
   }, [theme]);
@@ -132,6 +172,28 @@ export default function Hero() {
               : "repeating-linear-gradient(135deg, rgba(0,0,0,0.10) 0px, rgba(0,0,0,0.10) 1px, transparent 1px, transparent 18px)",
           opacity: theme === 'dark' ? 0.08 : 0.12,
           mixBlendMode: theme === 'dark' ? 'screen' : 'normal',
+        }}
+      />
+
+      {/* Starfield background for dark theme (section-level, avoids clipping) */}
+      <div
+        ref={lottieFlameContainerRef}
+        aria-hidden="true"
+        className="pointer-events-none"
+        style={{
+          position: 'absolute',
+          /* keep starfield below header to avoid clipping/obstruction; shifted up additional 7px */
+          top: 'calc(var(--header-offset, 72px) - 39px)',
+          left: 'calc(30% - 99px)',
+          width: 'calc(95% + 55px)',
+          height: 'calc(100% - var(--header-offset, 72px) + 39px)',
+          zIndex: 2,
+          mixBlendMode: 'screen',
+          opacity: theme === 'dark' ? 0.45 : 0,
+          filter: 'brightness(0.95) saturate(1.05)',
+          transform: 'rotate(90deg)',
+          transformOrigin: '50% 50%',
+          transition: 'opacity 300ms ease, transform 400ms ease'
         }}
       />
 
@@ -203,15 +265,16 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          <div className="md:w-6/12 w-full hidden md:flex items-center justify-center overflow-hidden rounded-xl pr-4 md:pr-6">
+          <div className="md:w-6/12 w-full hidden md:flex relative items-center justify-center overflow-hidden rounded-xl pr-4 md:pr-6">
             {theme === 'dark' ? (
+              <>
               <video
                 ref={heroVidRef}
                 onClick={handleHeroVideoClick}
                 onMouseDown={(e) => e.preventDefault()}
                 tabIndex={-1}
                 aria-hidden="true"
-                className="w-full max-w-[920px] h-[70vh] md:h-[90vh] lg:h-[95vh] object-contain transition-transform duration-300 mx-auto"
+                className="relative z-10 w-full max-w-[920px] h-[70vh] md:h-[90vh] lg:h-[95vh] object-contain transition-transform duration-300 mx-auto"
                 src={`${import.meta.env.BASE_URL}assets/3d-hygge-isometric-view-of-designers-desk-with-laptop-tablet-and-notebook.webm`}
                 autoPlay
                 loop
@@ -219,16 +282,34 @@ export default function Hero() {
                 playsInline
                 preload="auto"
               />
+              </>
             ) : (
-              <div
-                ref={lottieContainerRef}
-                onClick={handleHeroLottieClick}
-                onMouseDown={(e) => e.preventDefault()}
-                tabIndex={-1}
-                aria-hidden="true"
-                  className="w-full max-w-[920px] h-[70vh] md:h-[90vh] lg:h-[95vh] transition-transform duration-300 mx-auto"
-                style={lottieStyle}
-              />
+              <div className="w-full max-w-[920px] h-[70vh] md:h-[90vh] lg:h-[95vh] transition-transform duration-300 mx-auto relative">
+                <div
+                  ref={lottieLightBgContainerRef}
+                  aria-hidden="true"
+                  className="pointer-events-none"
+                  style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    zIndex: 0,
+                    opacity: 0.95,
+                    filter: 'brightness(0.98)'
+                  }}
+                />
+                <div
+                  ref={lottieContainerRef}
+                  onClick={handleHeroLottieClick}
+                  onMouseDown={(e) => e.preventDefault()}
+                  tabIndex={-1}
+                  aria-hidden="true"
+                  className="w-full h-full relative z-10"
+                  style={lottieStyle}
+                />
+              </div>
             )}
           </div>
 

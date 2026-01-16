@@ -4,7 +4,7 @@ const STORAGE_KEY = 'portfolio.theme';
 const ThemeContext = createContext(null);
 
 function getInitialTheme() {
-  if (typeof window === 'undefined') return 'dark';
+  if (typeof window === 'undefined') return 'light';
 
   try {
     const stored = window.localStorage.getItem(STORAGE_KEY);
@@ -15,7 +15,7 @@ function getInitialTheme() {
     // ignore read errors
   }
 
-  return 'light';
+  return 'light'; // Default to light mode
 }
 
 export function ThemeProvider({ children }) {
