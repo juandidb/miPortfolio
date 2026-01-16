@@ -253,7 +253,7 @@ export default function Skills() {
           {/* Soft Skills */}
           <div className="max-w-4xl mx-auto mb-12">
             <div className="bg-gradient-to-br from-gray-900 to-gray-800 dark:from-gray-800 dark:to-gray-900 rounded-2xl p-8 text-white">
-              <div className="flex items-center gap-3 mb-6">
+                <div className="flex items-center gap-3 mb-6">
                 <Target className="w-8 h-8 text-primary" />
                 <h3 className="text-2xl font-bold">{t('skills.complementaryTitle')}</h3>
               </div>

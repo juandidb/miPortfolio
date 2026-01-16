@@ -154,7 +154,7 @@ export default function About() {
           >
             {/* Main Description */}
             <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-8 shadow-lg">
-              <div className="flex items-center gap-3 mb-6">
+                <div className="flex items-center gap-3 mb-6">
                 <div className="p-3 rounded-xl bg-gradient-to-br from-primary to-purple-600">
                   <BookOpen className="w-6 h-6 text-white" />
                 </div>
@@ -329,7 +329,7 @@ export default function About() {
           <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-8 shadow-lg">
             <div className="text-center">
               <div className="inline-flex items-center gap-3 px-6 py-3 bg-gray-100 dark:bg-gray-700 rounded-full mb-6">
-                        <Target className="w-5 h-5 text-primary" />
+                <Target className="w-5 h-5 text-primary" />
                 <span className="text-gray-700 dark:text-gray-300 font-medium">
                   {t('about.approachBadge')}
                 </span>

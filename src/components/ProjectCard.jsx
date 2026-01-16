@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+import useIsMobile from '../hooks/useIsMobile.jsx';
 import { Github, ExternalLink } from 'lucide-react';
 import { useI18n } from '../i18n/index.jsx';
 
@@ -42,14 +43,15 @@ export default function ProjectCard({ project, index }) {
     }
   };
 
+  const isMobile = useIsMobile();
+
+  const Article = isMobile ? 'article' : motion.article;
+
   return (
-    <motion.article
-      variants={cardVariants}
-      initial="initial"
-      animate="animate"
-      whileHover="hover"
-      onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
+    <Article
+      {...(!isMobile ? { variants: cardVariants, initial: 'initial', animate: 'animate', whileHover: 'hover' } : {})}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
       className="group relative h-full rounded-2xl overflow-hidden bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-2xl transition-all duration-300"
     >
       {/* Efecto de gradiente en hover */}
@@ -154,6 +156,6 @@ export default function ProjectCard({ project, index }) {
 
       {/* Indicador de hover */}
       <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-purple-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
-    </motion.article>
+    </Article>
   );
 }

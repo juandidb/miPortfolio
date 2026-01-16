@@ -1,13 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Heart, Coffee, Code, Github, Linkedin, Mail, ArrowUp, MapPin, Phone, Palette, Zap, Film, Layers } from 'lucide-react';
+import { Heart, Coffee, Code, Github, Linkedin, Mail, ArrowUp, MapPin, Phone } from 'lucide-react';
 import { useI18n } from '../i18n';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
   const { t } = useI18n();
 
-  const logoUrl = '/logoJuan.png';
+  const logoUrl = `${import.meta.env.BASE_URL}logoJuan.png`;
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -56,10 +56,10 @@ export default function Footer() {
   ];
 
   const techStack = [
-    { name: 'React', icon: <Code className="w-5 h-5 text-primary" />, color: 'bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300' },
-    { name: 'Tailwind CSS', icon: <Palette className="w-5 h-5 text-cyan-600" />, color: 'bg-cyan-100 dark:bg-cyan-900/30 text-cyan-800 dark:text-cyan-300' },
-    { name: 'Vite', icon: <Zap className="w-5 h-5 text-purple-600" />, color: 'bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300' },
-    { name: 'Framer Motion', icon: <Layers className="w-5 h-5 text-pink-600" />, color: 'bg-pink-100 dark:bg-pink-900/30 text-pink-800 dark:text-pink-300' }
+    { name: 'React', icon: '⚛️', color: 'bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300' },
+    { name: 'Tailwind CSS', icon: '🎨', color: 'bg-cyan-100 dark:bg-cyan-900/30 text-cyan-800 dark:text-cyan-300' },
+    { name: 'Vite', icon: '⚡', color: 'bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300' },
+    { name: 'Framer Motion', icon: '✨', color: 'bg-pink-100 dark:bg-pink-900/30 text-pink-800 dark:text-pink-300' }
   ];
 
   const containerVariants = {
@@ -256,7 +256,7 @@ export default function Footer() {
                 <div className="hidden md:flex items-center gap-2">
                   <span className="text-xs">•</span>
                   <div className="flex items-center gap-1">
-                      <Heart className="w-3 h-3 text-red-500 animate-pulse" />
+                    <Heart className="w-3 h-3 text-red-500 animate-pulse" />
                     <span>{t('footer.bottom.craftedWithPassion')}</span>
                   </div>
                   <span className="text-xs">•</span>
@@ -303,7 +303,7 @@ export default function Footer() {
               className="mt-6 md:hidden text-center text-xs text-gray-500 dark:text-gray-500"
             >
               <div className="flex items-center justify-center gap-2 mb-2">
-                <Heart className="w-3 h-3 text-red-500" />
+                    <Heart className="w-3 h-3 text-red-500" />
                 <span>{t('footer.bottom.craftedWithPassion')}</span>
                 <Coffee className="w-3 h-3 text-yellow-600" />
                 <span>{t('footer.bottom.andEndlessCoffee')}</span>
@@ -331,7 +331,7 @@ export default function Footer() {
         className="fixed bottom-6 right-6 md:hidden p-3 bg-gradient-to-br from-primary to-purple-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 z-40"
         aria-label={t('footer.bottom.backToTopAria')}
       >
-        <ArrowUp className="w-5 h-5" />
+                <ArrowUp className="w-5 h-5" />
       </motion.button>
     </footer>
   );

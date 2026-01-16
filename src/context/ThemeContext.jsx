@@ -15,7 +15,7 @@ function getInitialTheme() {
     // ignore read errors
   }
 
-  return 'dark';
+  return 'light';
 }
 
 export function ThemeProvider({ children }) {

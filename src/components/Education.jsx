@@ -78,7 +78,7 @@ export default function Education() {
         es: 'Programa de soporte IT de ocho meses desarrollado por Google. Cubre troubleshooting, atención al cliente, redes, sistemas operativos, administración de sistemas y seguridad, con laboratorios prácticos.'
       },
       credential: {
-        asset: '/googleITcertificate.jpeg',
+        asset: `${import.meta.env.BASE_URL}certificados/googleITcertificate.jpeg`,
         type: 'image',
         alt: 'Google IT Support Professional Certificate'
       },
@@ -98,7 +98,7 @@ export default function Education() {
         es: 'Proyecto final del programa Advanced Data Analytics de Google, enfocado en aplicar análisis estadístico, modelado de datos y generación de insights sobre datasets reales.'
       },
       credential: {
-        asset: '/googledataanalysis.jpeg',
+        asset: `${import.meta.env.BASE_URL}certificados/googledataanalysis.jpeg`,
         type: 'image',
         alt: 'Google Advanced Data Analytics Capstone Certificate'
       },
@@ -118,7 +118,7 @@ export default function Education() {
         es: 'Programa intensivo de cuatro meses en un instituto educativo y de investigación con sede en Lisboa, Portugal, orientado a formación híbrida (presencial y online) en áreas de Negocios y Administración, Ciencia y Tecnología, Banca y Finanzas.'
       },
       credential: {
-        asset: '/1765741380183.pdf',
+        asset: `${import.meta.env.BASE_URL}certificados/1765741380183.pdf`,
         type: 'pdf',
         alt: 'Data Analysis Program Certificate'
       },
@@ -135,7 +135,7 @@ export default function Education() {
         es: 'Programa de desarrollo backend con foco en Node.js. Cubre APIs REST, bases de datos, autenticación, arquitectura server-side y seguridad, con proyectos prácticos y casos reales.'
       },
       credential: {
-        asset: '/Node_-_Certificacin.pdf',
+        asset: `${import.meta.env.BASE_URL}certificados/Node_-_Certificacin.pdf`,
         type: 'pdf',
         alt: 'Back-End Development with Node.js Certificate'
       },
@@ -152,7 +152,7 @@ export default function Education() {
         es: 'Curso de programación en Java desde cero, cubriendo conceptos orientados a objetos, estructuras de datos y desarrollo de aplicaciones reales.'
       },
       credential: {
-        asset: '/javaprogramming.jpeg',
+        asset: `${import.meta.env.BASE_URL}certificados/javaprogramming.jpeg`,
         type: 'image',
         alt: 'Programming with Java Certificate'
       },
@@ -169,7 +169,7 @@ export default function Education() {
         es: 'Curso de UX/UI para diseñar experiencias digitales intuitivas y atractivas, cubriendo investigación de usuarios, wireframes, prototipado y principios de diseño visual.'
       },
       credential: {
-        asset: '/uxuidesign.jpeg',
+        asset: `${import.meta.env.BASE_URL}certificados/uxuidesign.jpeg`,
         type: 'image',
         alt: 'UX/UI Design Certificate'
       },
@@ -186,7 +186,7 @@ export default function Education() {
       },
       institution: 'Ministerio de Educación de Buenos Aires',
       credential: {
-        asset: '/IIA-_Certificacin.pdf',
+        asset: `${import.meta.env.BASE_URL}certificados/IIA-_Certificacin.pdf`,
         type: 'pdf',
         alt: 'IIA Certification'
       }
@@ -198,7 +198,7 @@ export default function Education() {
       },
       institution: 'Cambridge International School of English',
       credential: {
-        asset: '/1765140628372.pdf',
+        asset: `${import.meta.env.BASE_URL}certificados/1765140628372.pdf`,
         type: 'pdf',
         alt: 'Professional Certificate 1765140628372'
       }
@@ -210,9 +210,33 @@ export default function Education() {
       },
       institution: 'Cambridge International School of English',
       credential: {
-        asset: '/1765141826193.pdf',
+        asset: `${import.meta.env.BASE_URL}certificados/1765141826193.pdf`,
         type: 'pdf',
         alt: 'Professional Certificate 1765141826193'
+      }
+    },
+    {
+      title: {
+        en: 'React + TypeScript (v3)',
+        es: 'React + TypeScript (v3)'
+      },
+      institution: 'Frontend Masters',
+      credential: {
+        asset: `${import.meta.env.BASE_URL}certificados/react-typescript-v3.pdf`,
+        type: 'pdf',
+        alt: 'React + TypeScript Certificate'
+      }
+    },
+    {
+      title: {
+        en: 'Backend System Design',
+        es: 'Diseño de Sistemas Backend'
+      },
+      institution: 'Frontend Masters',
+      credential: {
+        asset: `${import.meta.env.BASE_URL}certificados/backend-system-design-dark.pdf`,
+        type: 'pdf',
+        alt: 'Backend System Design Certificate'
       }
     }
   ];

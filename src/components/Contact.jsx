@@ -85,19 +85,19 @@ export default function Contact() {
   ];
 
   const socialLinks = [
-    {
-      icon: <Github className="w-5 h-5" />,
-      label: 'GitHub',
-      url: 'https://github.com/juandidb',
-      color: 'hover:bg-gray-800 hover:text-white dark:hover:bg-gray-700'
-    },
-    {
-      icon: <Linkedin className="w-5 h-5" />,
-      label: 'LinkedIn',
-      url: 'https://linkedin.com/in/juan-di-benedetto',
-      color: 'hover:bg-blue-600 hover:text-white'
-    }
-  ];
+      {
+        icon: <Github className="w-5 h-5" />,
+        label: 'GitHub',
+        url: 'https://github.com/juandidb',
+        color: 'hover:bg-gray-800 hover:text-white dark:hover:bg-gray-700'
+      },
+      {
+        icon: <Linkedin className="w-5 h-5" />,
+        label: 'LinkedIn',
+        url: 'https://linkedin.com/in/juan-di-benedetto',
+        color: 'hover:bg-blue-600 hover:text-white'
+      }
+    ];
 
   const containerVariants = {
     hidden: { opacity: 0 },

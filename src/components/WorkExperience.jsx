@@ -12,7 +12,7 @@ export default function WorkExperience() {
         en: 'FullStack Developer Freelance',
         es: 'Desarrollador FullStack Freelance'
       },
-      company: 'div.dev',
+      company: 'divstudio',
       period: '2023 — Actualidad',
       location: 'Remote',
       type: {
@@ -184,7 +184,7 @@ export default function WorkExperience() {
                     <div>
                       <div className="flex items-center gap-2 mb-2">
                         <div className="p-2 rounded-lg bg-primary/10">
-                            {index === 0 ? <Wrench className="w-4 h-4 text-primary" /> : <Code className="w-4 h-4 text-primary" />}
+                          {index === 0 ? <Wrench className="w-4 h-4 text-primary" /> : <Code className="w-4 h-4 text-primary" />}
                         </div>
                         <span className="text-xs font-semibold text-primary uppercase tracking-wider">
                           {item.type}
@@ -214,7 +214,7 @@ export default function WorkExperience() {
 
                   {/* Location and Industry */}
                   <div className="flex flex-wrap gap-4 mb-6">
-                    <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+                      <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
                       <MapPin className="w-3 h-3" />
                       {item.location}
                     </div>

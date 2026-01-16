@@ -173,7 +173,7 @@ const translations = {
           'Backend & API design',
           'Database schema & operational considerations'
         ],
-        cta: 'View case study'
+        cta: 'View case'
       },
       ctaText: 'Interested in seeing more? Check out my complete portfolio on GitHub.',
       ctaButton: 'View Full Portfolio',

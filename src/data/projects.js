@@ -11,25 +11,25 @@ export const projects = [
     },
     tech: ['React', 'Node.js', 'Tailwind CSS', 'TypeScript', 'SQL', 'API Integrations'],
     category: { en: 'Web Development', es: 'Desarrollo Web' },
-    image: '/assets/del.app.png',
+    image: `${import.meta.env.BASE_URL}assets/proyectos/del.app.png`,
     github: '',
     live: ''
   },
   {
     id: 'divdev-landing',
     title: {
-      en: 'div.dev - Landing Page',
-      es: 'div.dev - Landing Page'
+      en: 'divstudio - Landing Page',
+      es: 'divstudio - Landing Page'
     },
     description: {
       en: 'A modern and responsive landing page created for div.dev, focused on clear communication and conversion.',
-      es: 'Landing page moderna y responsiva creada para div.dev, enfocada en comunicación clara y conversión.'
+      es: 'Landing page moderna y responsiva creada para divstudio, enfocada en comunicación clara y conversión.'
     },
     tech: ['React', 'TypeScript', 'Tailwind CSS'],
     category: { en: 'Web Development', es: 'Desarrollo Web' },
-    image: '/assets/divdev.png',
+    image: `${import.meta.env.BASE_URL}assets/proyectos/divdev.png`,
     github: '',
-    live: ''
+    live: 'https://divstudio.me/'
   },
   {
     id: 'portfolio-vite',
@@ -42,7 +42,7 @@ export const projects = [
       es: 'Sitio de portfolio construido con React, Vite y Tailwind. Muestra proyectos, experiencia laboral y diseño responsivo.'
     },
     tech: ['React', 'Vite', 'Tailwind CSS', 'JavaScript'],
-    image: '/assets/portfolio.png',
+    image: `${import.meta.env.BASE_URL}assets/proyectos/portfolio.png`,
     github: 'https://github.com/juandidb/portfolio',
     live: ''
   },
@@ -58,7 +58,7 @@ export const projects = [
     },
     tech: ['JAVA', 'UX Design'],
     category: { en: 'JAVA Development', es: 'Desarrollo JAVA' },
-    image: '/assets/rinfo-darkmode.png',
+    image: `${import.meta.env.BASE_URL}assets/proyectos/rinfo-darkmode.png`,
     github: 'https://github.com/juandidb/rInfo-3.2',
     live: ''
   },
@@ -73,7 +73,7 @@ export const projects = [
       es: 'API REST para gestionar tareas construida con Node.js, Express y PostgreSQL. Incluye autenticación y endpoints CRUD.'
     },
     tech: ['Node.js', 'Express', 'PostgreSQL', 'TypeScript'],
-    image: '/assets/tasks-api.svg',
+    image: `${import.meta.env.BASE_URL}assets/proyectos/tasks-api.svg`,
     github: 'https://github.com/juandidb/tasks-api',
     live: ''
   }
@@ -89,7 +89,7 @@ export const projects = [
       es: 'Landing Page ultraliviana para un cafe local creada con JS nativo, HTML y CSS.'
     },
     tech: ['JavaScript', 'HTML5', 'CSS3'],
-    image: '/assets/sanmarcos.png',
+    image: `${import.meta.env.BASE_URL}assets/proyectos/sanmarcos.png`,
     github: 'https://juandidb.github.io/EspacioSanMarcos/',
     live: 'https://juandidb.github.io/EspacioSanMarcos/'
   }

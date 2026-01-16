@@ -42,7 +42,7 @@ export default function CaseDeli() {
 
             <div className="w-full lg:w-1/2">
               <div className="rounded-lg overflow-hidden shadow-lg">
-                <img src="/assets/9delivery.png" alt="Deli.app screenshot" className="w-full h-64 md:h-80 object-cover" />
+                <img src={`${import.meta.env.BASE_URL}assets/proyectos/9delivery.png`} alt="Deli.app screenshot" className="w-full h-64 md:h-80 object-cover" />
               </div>
             </div>
           </div>

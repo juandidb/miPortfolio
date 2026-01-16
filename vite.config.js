@@ -7,7 +7,7 @@ export default defineConfig({
   // This ensures `import.meta.env.BASE_URL` is a proper path (e.g. '/miPortfolio/')
   // Use relative paths so the generated `index.html` refers to assets
   // with `./assets/...` which works for both custom domains and GitHub Pages paths.
-  base: '/',
+  base: '/miPortfolio/',
   build: {
     outDir: 'docs',
     emptyOutDir: true

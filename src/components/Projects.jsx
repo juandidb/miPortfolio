@@ -44,25 +44,27 @@ export default function Projects() {
   return (
     <section id="projects" className="min-h-screen py-20 md:py-28 bg-gradient-to-b from-white to-gray-50 dark:from-slate-900 dark:to-slate-900">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header con animación */}
+        {/* Header con animación (texto + SVG) */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="mb-16 text-center"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-            {t('projects.titleA')} <span className="text-primary">{t('projects.titleB')}</span>
-          </h2>
-          <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            {t('projects.subtitle')}
-          </p>
-          
-          {/* Indicador de sección */}
-          <div className="mt-8 inline-block">
-            <div className="w-24 h-1 bg-gradient-to-r from-primary to-purple-600 rounded-full"></div>
-            <div className="w-16 h-1 bg-gradient-to-r from-purple-600 to-primary rounded-full mt-1 ml-auto"></div>
+          <div className="w-full">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+              {t('projects.titleA')} <span className="text-primary">{t('projects.titleB')}</span>
+            </h2>
+            <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+              {t('projects.subtitle')}
+            </p>
+
+            {/* Indicador de sección */}
+            <div className="mt-8 inline-block">
+              <div className="w-24 h-1 bg-gradient-to-r from-primary to-purple-600 rounded-full mx-auto"></div>
+              <div className="w-16 h-1 bg-gradient-to-r from-purple-600 to-primary rounded-full mt-1 mx-auto"></div>
+            </div>
           </div>
         </motion.div>
 
@@ -79,7 +81,7 @@ export default function Projects() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
               <div className="md:col-span-1 relative">
                 <img
-                  src="/assets/9delivery.png"
+                  src={`${import.meta.env.BASE_URL}assets/proyectos/9delivery.png`}
                   alt="Caso destacado - interfaz tablet con paleta oscura"
                   className="w-full h-56 md:h-full object-cover"
                   loading="lazy"
@@ -104,7 +106,7 @@ export default function Projects() {
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
-                  <a href="/case/deli-app" className="inline-flex items-center px-5 py-2 rounded-md bg-primary text-white font-medium hover:opacity-95 transition">{t('projects.featured.cta')}</a>
+                  <Link to="/case/deli-app" className="inline-flex items-center px-5 py-2 rounded-md bg-primary text-white font-medium hover:opacity-95 transition">{t('projects.featured.cta')}</Link>
                 </div>
               </div>
             </div>

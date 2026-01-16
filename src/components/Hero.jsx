@@ -1,7 +1,6 @@
 import { useEffect, useState, useRef } from 'react'
-// ...existing code...
-import { motion } from 'framer-motion'
-import { TypeAnimation } from 'react-type-animation'
+import lottie from 'lottie-web'
+import { motion, AnimatePresence } from 'framer-motion' 
 import { useI18n } from '../i18n/index.jsx'
 import { useTheme } from '../context/ThemeContext.jsx'
 
@@ -9,20 +8,92 @@ export default function Hero() {
   const { t, language } = useI18n();
   const { theme } = useTheme();
   const videoRef = useRef(null);
+  const heroVidRef = useRef(null);
+  const lottieContainerRef = useRef(null);
+  const lottieAnimRef = useRef(null);
 
   const roles = t('hero.roles');
-  const roleSequence = Array.isArray(roles)
-    ? roles.flatMap((role) => [role, 1500, { delete: String(role).length }])
-    : [];
+  const [roleIndex, setRoleIndex] = useState(0);
 
   useEffect(() => {
-    const el = videoRef.current;
-    if (theme === 'dark' && el) {
-      el.play().catch(() => {});
+    // rotate roles with a smooth fade
+    if (!Array.isArray(roles) || roles.length === 0) return;
+    setRoleIndex(0);
+    const id = setInterval(() => {
+      setRoleIndex((i) => (i + 1) % roles.length);
+    }, 2000);
+    return () => clearInterval(id);
+  }, [roles, language]);
+
+  // Background video disabled — no autoplay or rendering in any theme
+  const showVideo = false;
+
+  const handleHeroVideoClick = () => {
+    const el = heroVidRef.current;
+    if (!el) return;
+
+    try {
+      // increase playback speed for a short burst
+      el.playbackRate = 2.0;
+
+      // after 900ms restore normal speed
+      setTimeout(() => {
+        el.playbackRate = 1.0;
+      }, 900);
+    } catch (e) {
+      // ignore
+    }
+  };
+
+  const handleHeroLottieClick = () => {
+    const anim = lottieAnimRef.current;
+    if (!anim) return;
+    try {
+      anim.setSpeed(2.0);
+      setTimeout(() => {
+        anim.setSpeed(1.0);
+      }, 900);
+    } catch (e) {
+      // ignore
+    }
+  };
+
+  useEffect(() => {
+    // load Lottie animation only for light theme
+    if (theme !== 'dark' && lottieContainerRef.current) {
+      const anim = lottie.loadAnimation({
+        container: lottieContainerRef.current,
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        path: `${import.meta.env.BASE_URL}assets/animaciones/animacionhero.json`,
+      });
+      lottieAnimRef.current = anim;
+      return () => {
+        anim.destroy();
+        lottieAnimRef.current = null;
+      };
     }
   }, [theme]);
 
-  const showVideo = theme === 'dark';
+  const lottieStyle = {
+    cursor: 'pointer',
+    filter:
+      theme === 'dark'
+        ? 'invert(1) hue-rotate(170deg) brightness(1.05) saturate(0.9)'
+        : undefined,
+  };
+
+  const handleScrollToProjects = (e) => {
+    if (e && e.preventDefault) e.preventDefault();
+    const el = document.getElementById('projects');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      // fallback: update hash (useful if element not mounted)
+      window.location.hash = '#projects';
+    }
+  };
 
   return (
     <section
@@ -35,7 +106,7 @@ export default function Hero() {
           <video
             ref={videoRef}
             className="absolute top-0 left-0 w-full h-full object-cover brightness-110 contrast-110"
-            src="/assets/Portfolio_Hero_Video_Generation.mp4"
+          src={`${import.meta.env.BASE_URL}assets/Portfolio_Hero_Video_Generation.mp4`}
             autoPlay
             loop
             muted
@@ -47,67 +118,119 @@ export default function Hero() {
         </div>
       )}
 
+      {/* Decorative SVG background (positioned to the right) */}
+      {/* decorative background removed */}
+
+      {/* Subtle textured overlay (minimalist pattern) - always present */}
+      <div
+        className="absolute top-0 left-0 w-full h-full pointer-events-none"
+        style={{
+          zIndex: 5,
+          backgroundImage:
+            theme === 'dark'
+              ? "repeating-linear-gradient(135deg, rgba(255,255,255,0.04) 0px, rgba(255,255,255,0.04) 1px, transparent 1px, transparent 18px)"
+              : "repeating-linear-gradient(135deg, rgba(0,0,0,0.10) 0px, rgba(0,0,0,0.10) 1px, transparent 1px, transparent 18px)",
+          opacity: theme === 'dark' ? 0.08 : 0.12,
+          mixBlendMode: theme === 'dark' ? 'screen' : 'normal',
+        }}
+      />
+
       <div className="relative z-10 w-full px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="max-w-4xl mx-auto text-center"
+          className={'max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-8 text-left'}
         >
-          {/* Nombre fijo */}
-          <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className={`group text-5xl md:text-6xl lg:text-7xl font-extrabold ${theme === 'dark' ? 'text-white' : 'text-gray-900 dark:text-white'} transition-colors duration-500 ease-in-out cursor-pointer mb-6`}
-          >
-            <span className={`${theme === 'dark' ? 'text-white' : 'text-gray-900 dark:text-white'} dark:group-hover:text-[#079b98] transition-colors duration-500 ease-in-out`}>Juan</span>
-            {' '}
-            <span className={`${theme === 'dark' ? 'text-white' : (theme === 'dark' ? 'text-blue-500 dark:text-blue-400' : 'text-primary')} dark:group-hover:text-[#079b98] transition-colors duration-500 ease-in-out`}>Di Benedetto</span>
-          </motion.h1>
+          <div className="md:w-6/12 w-full pr-4 md:pr-6 pl-4 md:pl-6 flex flex-col justify-center items-center md:items-start text-center md:text-left py-6 md:py-12">
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className={`relative group text-5xl md:text-6xl lg:text-7xl font-extrabold ${theme === 'dark' ? 'text-white' : 'text-gray-900 dark:text-white'} transition-colors duration-500 ease-in-out cursor-pointer mb-6`}
+            >
+              <span className={`${theme === 'dark' ? 'text-white' : 'text-gray-900 dark:text-white'} dark:group-hover:text-[#079b98] transition-colors duration-500 ease-in-out block`}>Juan</span>
+              <span className={`${theme === 'dark' ? 'text-white' : (theme === 'dark' ? 'text-blue-500 dark:text-blue-400' : 'text-primary')} dark:group-hover:text-[#079b98] transition-colors duration-500 ease-in-out block`}>Di Benedetto</span>
+              {/* Decorative SVG placed over the name */}
+              {/* overlay decorative element removed */}
+            </motion.h1>
 
-          {/* Texto animado de profesiones */}
-          <div className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-700 dark:text-gray-300 min-h-[80px] md:min-h-[90px] mb-8">
-            <TypeAnimation
-              key={language}
-              sequence={[...roleSequence, '', 1000]}
-              wrapper="span"
-              speed={50}
-              cursor={true}
-              repeat={Infinity}
-            />
+            <div className="text-3xl md:text-4xl lg:text-5xl font-extrabold hero-font text-gray-700 dark:text-gray-300 leading-normal min-h-[72px] md:min-h-[84px] mb-6 overflow-hidden pb-1">
+              <div className="inline-block">
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={roleIndex}
+                    initial={{ opacity: 0, y: 6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -6 }}
+                    transition={{ duration: 0.45 }}
+                    className="inline-block truncate whitespace-nowrap"
+                  >
+                    {Array.isArray(roles) ? roles[roleIndex] : roles}
+                  </motion.span>
+                </AnimatePresence>
+              </div>
+            </div>
+
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="max-w-2xl text-lg md:text-xl text-gray-600 dark:text-white mb-10"
+            >
+              {t('hero.intro')}
+            </motion.p>
+
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className={theme === 'dark' ? 'flex flex-col sm:flex-row gap-4 justify-center' : 'flex flex-col sm:flex-row gap-4'}
+            >
+              <a
+                href="#projects"
+                onClick={handleScrollToProjects}
+                className="inline-flex items-center justify-center px-6 py-3 rounded-md bg-primary text-white hover:opacity-95 text-lg font-medium transition-all duration-300 hover:scale-105"
+              >
+                {t('hero.ctaProjects')}
+              </a>
+              <a 
+                href="#contact" 
+                className="inline-flex items-center justify-center px-6 py-3 rounded-md border-2 border-slate-300 dark:border-slate-600 text-lg font-medium transition-all duration-300 hover:scale-105 hover:bg-gray-100 dark:hover:bg-gray-800"
+              >
+                {t('hero.ctaContact')}
+              </a>
+            </motion.div>
           </div>
 
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="max-w-2xl mx-auto text-lg md:text-xl text-gray-600 dark:text-white mb-10"
-          >
-            {t('hero.intro')}
-          </motion.p>
-
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
-          >
-            <a 
-              href="#projects" 
-              className="inline-flex items-center justify-center px-6 py-3 rounded-md bg-primary text-white hover:opacity-95 text-lg font-medium transition-all duration-300 hover:scale-105"
-            >
-              {t('hero.ctaProjects')}
-            </a>
-            <a 
-              href="#contact" 
-              className="inline-flex items-center justify-center px-6 py-3 rounded-md border-2 border-slate-300 dark:border-slate-600 text-lg font-medium transition-all duration-300 hover:scale-105 hover:bg-gray-100 dark:hover:bg-gray-800"
-            >
-              {t('hero.ctaContact')}
-            </a>
-          </motion.div>
-
-          {/* ...eliminado botón de play/pausa... */}
+          <div className="md:w-6/12 w-full hidden md:flex items-center justify-center overflow-hidden rounded-xl pr-4 md:pr-6">
+            {theme === 'dark' ? (
+              <video
+                ref={heroVidRef}
+                onClick={handleHeroVideoClick}
+                onMouseDown={(e) => e.preventDefault()}
+                tabIndex={-1}
+                aria-hidden="true"
+                className="w-full max-w-[920px] h-[70vh] md:h-[90vh] lg:h-[95vh] object-contain transition-transform duration-300 mx-auto"
+                src={`${import.meta.env.BASE_URL}assets/3d-hygge-isometric-view-of-designers-desk-with-laptop-tablet-and-notebook.webm`}
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="auto"
+              />
+            ) : (
+              <div
+                ref={lottieContainerRef}
+                onClick={handleHeroLottieClick}
+                onMouseDown={(e) => e.preventDefault()}
+                tabIndex={-1}
+                aria-hidden="true"
+                  className="w-full max-w-[920px] h-[70vh] md:h-[90vh] lg:h-[95vh] transition-transform duration-300 mx-auto"
+                style={lottieStyle}
+              />
+            )}
+          </div>
 
         </motion.div>
       </div>
