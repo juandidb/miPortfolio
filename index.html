@@ -3,24 +3,32 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/miPortfolio/logoJuan.png" sizes="32x32">
+    <link rel="shortcut icon" href="/miPortfolio/logoJuan.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/miPortfolio/logoJuan.png">
+    <meta name="msapplication-TileImage" content="/logoJuan.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Juan DiB — Software Developer. Building reliable, maintainable web applications focusing on clean code and systems-minded design." />
     <meta name="theme-color" content="#111827" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800;900&display=swap" rel="stylesheet">
     <script>
       (function() {
         try {
           var storedTheme = localStorage.getItem('portfolio.theme');
-          if (!storedTheme || storedTheme === 'dark') {
+          if (storedTheme === 'dark') {
             document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
           }
         } catch (err) {
-          document.documentElement.classList.add('dark');
+          document.documentElement.classList.remove('dark');
         }
       })();
     </script>
     <title>Juan Di Benedetto</title>
-    <script type="module" crossorigin src="/miPortfolio/assets/index-DR5Mtnfp.js"></script>
-    <link rel="stylesheet" crossorigin href="/miPortfolio/assets/index-BTxJv7Hm.css">
+    <script type="module" crossorigin src="/miPortfolio/assets/index-DqkXSrvM.js"></script>
+    <link rel="stylesheet" crossorigin href="/miPortfolio/assets/index-BJf6YBK0.css">
   </head>
   <body>
     <div id="root"></div>
