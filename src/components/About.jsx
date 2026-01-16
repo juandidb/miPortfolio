@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { User, Code, Users, Target, BarChart2, BookOpen } from 'lucide-react';
 import { useI18n } from '../i18n/index.jsx';
+import scrollToId from '../utils/scrollTo';
 
 export default function About() {
   const { t } = useI18n();
@@ -366,12 +367,14 @@ export default function About() {
           <div className="flex flex-wrap justify-center gap-4">
             <a
               href="#projects"
+              onClick={(e) => scrollToId(e, 'projects')}
               className="inline-flex items-center gap-2 px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg font-semibold hover:bg-gray-800 dark:hover:bg-gray-100 transition-all duration-300 hover:scale-105"
             >
               {t('about.ctaWork')}
             </a>
             <a
               href="#contact"
+              onClick={(e) => scrollToId(e, 'contact')}
               className="inline-flex items-center gap-2 px-6 py-3 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg font-semibold hover:bg-gray-50 dark:hover:bg-gray-800 transition-all duration-300 hover:scale-105"
             >
               {t('about.ctaContact')}

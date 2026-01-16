@@ -9,13 +9,15 @@ import Education from './components/Education'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import ThemeToggle from './components/ThemeToggle'
+import LightMobileBg from './components/LightMobileBg'
 
 import { Routes, Route } from 'react-router-dom';
 import CaseDeli from './pages/CaseDeli';
 
 function Home() {
   return (
-    <div className="min-h-screen bg-white text-slate-900 dark:bg-slate-900 dark:text-slate-100 transition-colors">
+    <div className="relative min-h-screen bg-white text-slate-900 dark:bg-slate-900 dark:text-slate-100 transition-colors">
+      <LightMobileBg />
       <Navbar />
       <Hero />
 

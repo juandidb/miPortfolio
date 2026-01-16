@@ -4,6 +4,15 @@ import { Briefcase, Calendar, MapPin, Code, Wrench, Cpu } from 'lucide-react';
 import { useI18n } from '../i18n/index.jsx';
 
 export default function WorkExperience() {
+    const handleScrollToContact = (e) => {
+      if (e && e.preventDefault) e.preventDefault();
+      const el = document.getElementById('contact');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else {
+        window.location.hash = '#contact';
+      }
+    };
   const { language, t } = useI18n();
 
   const items = [
@@ -319,6 +328,7 @@ export default function WorkExperience() {
               </a>
               <a
                 href="#contact"
+                onClick={handleScrollToContact}
                 className="inline-flex items-center gap-2 px-6 py-3 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg font-semibold hover:bg-gray-50 dark:hover:bg-gray-800 transition-all duration-300 hover:scale-105"
               >
                 {t('experience.ctaContact')}

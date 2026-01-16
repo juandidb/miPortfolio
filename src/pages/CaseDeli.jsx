@@ -5,6 +5,15 @@ import { motion } from 'framer-motion';
 import { Github, Download } from 'lucide-react';
 
 export default function CaseDeli() {
+    const handleScrollToContact = (e) => {
+      if (e && e.preventDefault) e.preventDefault();
+      const el = document.getElementById('contact');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else {
+        window.location.hash = '#contact';
+      }
+    };
   const { t } = useI18n();
   const navigate = useNavigate();
 
@@ -129,7 +138,7 @@ export default function CaseDeli() {
               <p className="text-sm text-gray-700 dark:text-gray-300">Si querés ver el repositorio o coordinar una charla sobre este proyecto, contactame.</p>
               <div className="mt-3 flex flex-col gap-2">
                 <a href="https://github.com/juandidb" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 px-4 py-2 bg-white dark:bg-slate-900 border rounded-md">Ver repo</a>
-                <a href="#contact" className="inline-flex items-center justify-center gap-2 px-4 py-2 bg-primary text-white rounded-md">Contactarme</a>
+                <a href="#contact" onClick={handleScrollToContact} className="inline-flex items-center justify-center gap-2 px-4 py-2 bg-primary text-white rounded-md">Contactarme</a>
               </div>
             </div>
           </aside>

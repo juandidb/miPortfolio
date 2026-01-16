@@ -42,7 +42,7 @@ export default function Contact() {
       ? 'Se ha redireccionado a WhatsApp.'
       : 'Redirected to WhatsApp chat.';
 
-    const whatsappNumber = '54923171471695';
+    const whatsappNumber = '+549 (2317) 471695';
     const composedMessage = [
       `Hola Juan, soy ${form.name}.`,
       `Mi correo es ${form.email}.`,
@@ -71,8 +71,8 @@ export default function Contact() {
     {
       icon: <Phone className="w-5 h-5" />,
       title: t('contact.info.phone'),
-      value: '+54 9 2317 1471695',
-      link: 'tel:+54923171471695',
+      value: '+54 9 2317 471695',
+      link: 'tel:+5492317 471695',
       color: 'from-green-500 to-emerald-500'
     },
     {
@@ -83,6 +83,8 @@ export default function Contact() {
       color: 'from-red-500 to-orange-500'
     }
   ];
+
+  // no Lottie background in Contact (handled in Hero and global LightMobileBg)
 
   const socialLinks = [
       {

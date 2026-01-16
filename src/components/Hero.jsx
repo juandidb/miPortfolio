@@ -135,6 +135,16 @@ export default function Hero() {
     }
   };
 
+  const handleScrollToContact = (e) => {
+    if (e && e.preventDefault) e.preventDefault();
+    const el = document.getElementById('contact');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      window.location.hash = '#contact';
+    }
+  };
+
   return (
     <section
       id="hero"
@@ -257,7 +267,8 @@ export default function Hero() {
                 {t('hero.ctaProjects')}
               </a>
               <a 
-                href="#contact" 
+                href="#contact"
+                onClick={handleScrollToContact}
                 className="inline-flex items-center justify-center px-6 py-3 rounded-md border-2 border-slate-300 dark:border-slate-600 text-lg font-medium transition-all duration-300 hover:scale-105 hover:bg-gray-100 dark:hover:bg-gray-800"
               >
                 {t('hero.ctaContact')}

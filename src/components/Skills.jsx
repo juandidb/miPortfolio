@@ -337,12 +337,14 @@ export default function Skills() {
             <div className="flex flex-wrap justify-center gap-4">
               <a
                 href="#projects"
+                onClick={(e) => { e.preventDefault(); const el = document.getElementById('projects'); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' }); else window.location.hash = '#projects'; }}
                 className="inline-flex items-center gap-2 px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg font-semibold hover:bg-gray-800 dark:hover:bg-gray-100 transition-all duration-300 hover:scale-105"
               >
                 {t('skills.ctaProjects')}
               </a>
               <a
                 href="#contact"
+                onClick={(e) => { e.preventDefault(); const el = document.getElementById('contact'); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' }); else window.location.hash = '#contact'; }}
                 className="inline-flex items-center gap-2 px-6 py-3 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg font-semibold hover:bg-gray-50 dark:hover:bg-gray-800 transition-all duration-300 hover:scale-105"
               >
                 {t('skills.ctaContact')}
