@@ -141,7 +141,7 @@ export default function ProjectCard({ project, index }) {
                 whileHover={{ x: 3 }}
               >
                 <ExternalLink className="w-5 h-5" />
-                {t('projects.card.live')}
+                {project.id === 'carmax' ? 'Live Demo' : project.id === 'divdev-landing' ? 'Link' : t('projects.card.live')}
               </motion.a>
             )}
             {!project.github && !project.live && (

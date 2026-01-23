@@ -32,19 +32,20 @@ export const projects = [
     live: 'https://divstudio.me/'
   },
   {
-    id: 'portfolio-vite',
+    id: 'carmax',
     title: {
-      en: 'Personal Portfolio (This site)',
-      es: 'Portfolio Personal (Este sitio)'
+      en: 'CarMax - Inventory Dashboard',
+      es: 'CarMax - Panel de Inventario'
     },
     description: {
-      en: 'The portfolio website built with React, Vite and Tailwind. Demonstrates projects, work experience and responsive design.',
-      es: 'Sitio de portfolio construido con React, Vite y Tailwind. Muestra proyectos, experiencia laboral y diseño responsivo.'
+      en: 'Full-featured web application with an admin dashboard that allows CarMax staff to add and manage vehicles, apply filters and view analytics. Includes inventory management, responsive UI and admin CRUD operations.',
+      es: 'Aplicación web completa con panel de administración que permite al personal de CarMax agregar y gestionar vehículos, aplicar filtros y ver analíticas. Incluye gestión de inventario, interfaz responsiva y operaciones CRUD para administradores.'
     },
-    tech: ['React', 'Vite', 'Tailwind CSS', 'JavaScript'],
-    image: `${import.meta.env.BASE_URL}assets/proyectos/portfolio.png`,
-    github: 'https://github.com/juandidb/portfolio',
-    live: ''
+    tech: ['React', 'TypeScript', 'Tailwind CSS', 'Node.js'],
+    category: { en: 'Web Development', es: 'Desarrollo Web' },
+    image: `${import.meta.env.BASE_URL}assets/proyectos/carmax.png`,
+    github: '',
+    live: 'https://carmax-3eq2pvlim-carmax9dj.vercel.app/'
   },
   {
     id: 'rInfoDarkMode',
@@ -79,18 +80,18 @@ export const projects = [
   }
   ,
   {
-    id: 'esopaciosanmarcos',
+    id: 'landing-surveyor',
     title: {
-      en: 'Espacio San Marcos Demo',
-      es: 'Demo Espacio San Marcos'
+      en: 'Landing Surveyor',
+      es: 'Landing page para Ingeniero Agrimensor'
     },
     description: {
-      en: 'Ultra-light landing page for a local cafe built with vanilla JS, HTML and CSS.',
-      es: 'Landing Page ultraliviana para un cafe local creada con JS nativo, HTML y CSS.'
+      en: 'Landing page for Surveyor with responsive design and conversion-focused layout.',
+      es: 'Landing page para Ingeniero Agrimensor con diseño responsivo y foco en conversión.'
     },
-    tech: ['JavaScript', 'HTML5', 'CSS3'],
-    image: `${import.meta.env.BASE_URL}assets/proyectos/sanmarcos.png`,
-    github: 'https://juandidb.github.io/EspacioSanMarcos/',
-    live: 'https://juandidb.github.io/EspacioSanMarcos/'
+    tech: ['HTML', 'CSS', 'JavaScript'],
+    image: `${import.meta.env.BASE_URL}assets/proyectos/landingsurveyor.png`,
+    github: '',
+    live: 'https://juandidb.github.io/landinglucho'
   }
 ]

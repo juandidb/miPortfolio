@@ -479,7 +479,7 @@ const translations = {
         categoryFallback: 'Desarrollo Web',
         techTitle: 'Tecnologías Usadas',
         code: 'Código',
-        live: 'Demo',
+        live: 'Live Demo',
         details: 'Ver Detalles'
       }
     },
